@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<!-- 基本 -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>ソシャゲ周回回数計算</title>
+	<!-- SEO -->
+	<meta name="description" content="ソシャゲのイベント目標pt.までどのくらい頑張ればいいかを計算します。">
+	<meta name="robots" content="index, follow, noarchive">
+	<!-- favicon -->
+	<link rel="icon" href="favicon.svg" type="image/svg+xml">
+	<link rel="icon alternate" href="apple-touch-icon.png" sizes="180x180" type="image/png"><!-- SVG favicon未対応ブラウザ用 -->
+	<link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" type="image/png">
+	<link rel="mask-icon" href="pinned-tab-icon.svg" color="#00c853" type="image/svg+xml">
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css"
+		crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/fe0d51c8bc.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;700;800;900&display=swap" rel="stylesheet"
+		crossorigin="anonymous">
+	<style>
+		h1 {
+			font-family: 'M PLUS 1p', sans-serif;
+			font-weight: 800;
+			color: #00c853;
+			display: flex;
+			align-items: center;
+		}
+
+		form {
+			border: 1px solid #efefef;
+			padding: 1rem;
+			width: max-content;
+			margin-bottom: 1rem;
+		}
+
+		.far,
+		.fas {
+			margin-right: 0.25rem;
+		}
+
+		table {
+			width: max-content;
+			max-width: 100%;
+			border: 1px solid #efefef;
+		}
+
+		tr td:first-child {
+			max-width: 13rem;
+			padding-left: 1rem;
+		}
+
+		tr td:last-child {
+			padding-right: 1rem;
+		}
+	</style>
+	<!-- OGP -->
+	<meta property="og:title" content="ソシャゲ周回回数計算">
+	<meta property="og:type" content="website">
+	<!-- <meta property="og:url" content="ページのURL"> -->
+	<meta property="og:image" content="img/OGP_image.png">
+	<meta property="og:description" content="ソシャゲのイベント目標pt.までどのくらい頑張ればいいかを計算します。">
+	<meta name="twitter:card" content="summary">
+</head>
+
+<body>
+	<main>
+		<h1><img src="favicon.svg" width="100" height="100" alt="">ソシャゲ周回回数計算</h1>
+		<p>イベント目標pt.までどのくらい頑張ればいいかを計算します。</p>
+		<form id="js-form" method="dialog">
+			<label for="js-input_span">残りイベント日数
+				<input type="number" id="js-input_span" min="1" step="1" placeholder="例：14" required>
+			</label>
+			<label for="js-input_goal">目標pt.
+				<input type="number" id="js-input_goal" min="0" step="1" placeholder="例：100000" required>
+			</label>
+			<label for="js-input_total">獲得済みpt.
+				<input type="number" id="js-input_total" min="0" step="1" placeholder="例：5000" required>
+			</label>
+			<label for="js-input_approx">1出撃で獲得できる平均pt.
+				<input type="number" id="js-input_approx" min="1" step="1" placeholder="例：400">
+			</label>
+			<button type="submit" id="js-submit"><i class="fas fa-calculator"></i>計算する</button>
+		</form>
+
+		<table>
+			<tbody>
+				<tr>
+					<td>目標までの残りpt.</td>
+					<td id="js-output-remain"></td>
+				</tr>
+				<tr>
+					<td>1日当たりの目標pt.</td>
+					<td id="js-output-dailyGoal"></td>
+				</tr>
+				<tr>
+					<td>目標Pt.までに必要な周回回数</td>
+					<td id="js-output-remainBattle"></td>
+				</tr>
+				<tr>
+					<td>目標pt.までに必要な1日当たりの周回回数</td>
+					<td id="js-output-dailyBattle"></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</main>
+	<script src="index.js"></script>
+</body>
+
+</html>
