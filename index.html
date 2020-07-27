@@ -73,7 +73,7 @@
 	<main>
 		<h1><img src="favicon.svg" width="100" height="100" alt="">ソシャゲ周回回数計算</h1>
 		<p>イベント目標pt.までどのくらい頑張ればいいかを計算します。</p>
-		<form id="js-form" method="dialog">
+		<form id="js-form">
 			<label for="js-input_span">残りイベント日数
 				<input type="number" id="js-input_span" min="1" step="1" placeholder="例：14" required>
 			</label>
@@ -86,7 +86,7 @@
 			<label for="js-input_approx">1出撃で獲得できる平均pt.
 				<input type="number" id="js-input_approx" min="1" step="1" placeholder="例：400">
 			</label>
-			<button type="submit" id="js-submit"><i class="fas fa-calculator"></i>計算する</button>
+			<button type="button" id="js-button"><i class="fas fa-calculator"></i>計算する</button>
 		</form>
 
 		<table>
