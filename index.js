@@ -21,24 +21,26 @@ const calc = () => {
 		total: Number.parseInt(getTotal.value, 10), // 獲得済みpt.
 		approx: Number.parseInt(getApprox.value, 10) // 1周回あたりの平均獲得pt.
 	};
-	// NaN判定
-	if (!Number.isNaN(gameEvent.goal && gameEvent.goal && gameEvent.total && gameEvent.approx)) {
+	// input#span, goal, totalをNaN判定
+	if (!Number.isNaN(gameEvent.goal && gameEvent.goal && gameEvent.total)) {
 		// 数値の場合、計算
 		const remain = gameEvent.goal - gameEvent.total, // 目標までのポイント数
-			dailyGoal = Math.round(remain / gameEvent.span), // 1日当たりの目標ポイント
-			remainBattle = Math.ceil(remain / gameEvent.approx), // 残り周回回数
-			dailyBattle = Math.ceil(dailyGoal / gameEvent.approx); // 1日当たりの必要出撃回数
-
-		// htmlに表示
+			dailyGoal = Math.round(remain / gameEvent.span); // 1日当たりの目標ポイント
+		// htmlに出力
 		getRemain.textContent = `${remain.toLocaleString()}pt.`;
 		getDailyGoal.textContent = `${dailyGoal.toLocaleString()}pt.`;
-		// approxに数値が入力されている場合、周回回数系を計算
-		if (getApprox.value !== "") {
+
+		// approxが空欄ではなく、数値が入力されている場合、周回回数系を計算して出力
+		if (getApprox.value !== "" && !Number.isNaN(gameEvent.approx)) {
+			const remainBattle = Math.ceil(remain / gameEvent.approx), // 残り周回回数
+				dailyBattle = Math.ceil(dailyGoal / gameEvent.approx); // 1日当たりの必要出撃回数
+			// htmlに出力
 			getRemainBattle.textContent = `${remainBattle.toLocaleString()}回`;
 			getDailyBattle.textContent = `${dailyBattle.toLocaleString()}回`;
 		}
 	} else { // フォームへの入力内容が数値でない場合
-		alert('整数を入力してください。'); }
+		alert('整数を入力してください。');
+	}
 };
 
 // 計算ボタン押下時関数calcを実行
