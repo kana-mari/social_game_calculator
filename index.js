@@ -5,12 +5,6 @@ const
 	getTotal = document.getElementById('js-input_total'),
 	getApprox = document.getElementById('js-input_approx'),
 	getButton = document.getElementById('js-button');
-// 計算した結果を出力する部分
-const outputRemain = document.getElementById('js-output-remain'),
-	outputDailyGoal = document.getElementById('js-output-dailyGoal'),
-	outputRemainBattle = document.getElementById('js-output-remainBattle'),
-	outputDailyBattle = document.getElementById('js-output-dailyBattle');
-
 // 関数 フォームへの入力内容を取得→整数にパース→計算→html上で表示する
 const calc = () => {
 	// 入力内容を取得
@@ -26,6 +20,12 @@ const calc = () => {
 		const remain = gameEvent.goal - gameEvent.total, // 目標までのポイント数
 			dailyGoal = Math.round(remain / gameEvent.span); // 1日当たりの目標ポイント
 		// htmlに出力
+		// 出力先DOM取得
+		const outputRemain = document.getElementById('js-output-remain'),
+			outputDailyGoal = document.getElementById('js-output-dailyGoal'),
+			outputRemainBattle = document.getElementById('js-output-remainBattle'),
+			outputDailyBattle = document.getElementById('js-output-dailyBattle');
+		// 計算結果を出力
 		outputRemain.textContent = `${remain.toLocaleString()}pt.`;
 		outputDailyGoal.textContent = `${dailyGoal.toLocaleString()}pt.`;
 
