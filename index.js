@@ -1,12 +1,11 @@
-// ユーザーからの入力を受け取る
-const
-	getSpan = document.getElementById('js-input_span'),
-	getGoal = document.getElementById('js-input_goal'),
-	getTotal = document.getElementById('js-input_total'),
-	getApprox = document.getElementById('js-input_approx'),
-	getButton = document.getElementById('js-button');
 // 関数 フォームへの入力内容を取得→整数にパース→計算→html上で表示する
 const calc = () => {
+	// ユーザーからの入力を受け取る
+	const
+		getSpan = document.getElementById('js-input_span'),
+		getGoal = document.getElementById('js-input_goal'),
+		getTotal = document.getElementById('js-input_total'),
+		getApprox = document.getElementById('js-input_approx');
 	// 入力内容を取得
 	const gameEvent = {
 		span: Number.parseInt(getSpan.value, 10), // イベント日数
@@ -43,4 +42,5 @@ const calc = () => {
 };
 
 // 計算ボタン押下時関数calcを実行
+const getButton = document.getElementById('js-button');
 getButton.addEventListener('click', calc);
