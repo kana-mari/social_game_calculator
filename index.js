@@ -1,5 +1,7 @@
-// 関数 フォームへの入力内容を取得→整数にパース→計算→html上で表示する
-const calc = () => {
+// 計算ボタン押下時関数calcを実行
+const getButton = document.getElementById('js-button');
+getButton.addEventListener('click', () => {
+	// 関数 フォームへの入力内容を取得→整数にパース→計算→html上で表示する
 	// ユーザーからの入力を受け取る
 	const
 		getSpan = document.getElementById('js-input_span'),
@@ -39,8 +41,4 @@ const calc = () => {
 	} else { // フォームへの入力内容が数値でない場合
 		alert('整数を入力してください。');
 	}
-};
-
-// 計算ボタン押下時関数calcを実行
-const getButton = document.getElementById('js-button');
-getButton.addEventListener('click', calc);
+});
