@@ -1,6 +1,5 @@
-// 計算ボタン押下時関数calcを実行
-const getButton = document.getElementById('js-button');
-getButton.addEventListener('click', () => {
+// 計算ボタン押下時関数を実行
+document.getElementById('js-button').addEventListener('click', () => {
 	// 関数 フォームへの入力内容を取得→整数にパース→計算→html上で表示する
 	// ユーザーからの入力を受け取る
 	const
