@@ -18,7 +18,6 @@
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css"
 		crossorigin="anonymous">
-	<script src="https://kit.fontawesome.com/fe0d51c8bc.js" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;700;800;900&display=swap" rel="stylesheet"
 		crossorigin="anonymous">
 	<style>
@@ -35,6 +34,11 @@
 			padding: 1rem;
 			width: max-content;
 			margin-bottom: 1rem;
+		}
+
+		button {
+			display: flex;
+			align-items: center;
 		}
 
 		.far,
@@ -78,7 +82,7 @@
 				<input type="number" id="js-input_span" min="1" step="1" placeholder="例：14" required>
 			</label>
 			<label for="js-input_goal">目標pt.
-				<input type="number" id="js-input_goal" min="0" step="1" placeholder="例：100000" required>
+				<input type="number" id="js-input_goal" min="1" step="1" placeholder="例：100000" required>
 			</label>
 			<label for="js-input_total">獲得済みpt.
 				<input type="number" id="js-input_total" min="0" step="1" placeholder="例：5000" required>
@@ -86,7 +90,9 @@
 			<label for="js-input_approx">1出撃で獲得できる平均pt.<small>（任意入力）</small>
 				<input type="number" id="js-input_approx" min="1" step="1" placeholder="例：400">
 			</label>
-			<button type="button" id="js-button"><i class="fas fa-calculator"></i>計算する</button>
+			<button type="button" id="js-button">
+				<img src="img\calc-icon.svg" width="20" height="20" alt=""> 計算する
+			</button>
 		</form>
 
 		<table>
