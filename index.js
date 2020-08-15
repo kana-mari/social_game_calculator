@@ -1,5 +1,5 @@
 // v8nをインポート
-import v8n from "./lib/v8n/v8n.js";
+import v8n from "v8n";
 // 計算ボタン押下時関数を実行
 document.getElementById('js-button').addEventListener('click', () => {
 	// 関数 フォームへの入力内容を取得→整数にパース→計算→html上で表示する
