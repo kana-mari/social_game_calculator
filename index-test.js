@@ -1,13 +1,8 @@
-{// 入力系
-	// ユーザーからの入力を受け取る
-	const getDOM = {
-		span: document.getElementById('js-input_span'),
-		goal: document.getElementById('js-input_goal'),
-		total: document.getElementById('js-input_total'),
-		approx: document.getElementById('js-input_approx')
-	};
-}
-{
-const test = parseInt(document.getElementById('js-input_span').value, 10);
-console.log(v8n().numeric().test(test));
-}
+import v8n from "./lib/v8n/v8n.js";
+const validationRule = v8n().numeric().integer();
+console.log(validationRule.test([1, 2, 3]));
+v8n()
+	.numeric()
+	.integer()
+	.greaterThanOrEqual(1)
+	.test(1, 2);
