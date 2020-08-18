@@ -43,8 +43,8 @@ document.getElementById('js-button').addEventListener('click', () => {
 			outputDailyBattle.textContent = `${Math.ceil(calcDailyGoal / getInput.approx).toLocaleString()}回`;
 		} else {
 			// 空の内容を出力
-			outputRemainBattle.textContent,
-				outputDailyBattle.textContent = "";
+			outputRemainBattle.textContent = "";
+			outputDailyBattle.textContent = "";
 		}
 	} else { // span,goal,totalの入力内容が数値でない場合
 		alert('整数を入力してください。');
