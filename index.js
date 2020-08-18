@@ -25,10 +25,10 @@ document.getElementById('js-button').addEventListener('click', () => {
 			calcDailyGoal = Math.round(calcRemain / getInput.span); // 1日当たりの目標ポイント
 		// htmlに出力
 		// 出力先DOM取得
-		const outputRemain = document.getElementById('js-output-remain'),
-			outputDailyGoal = document.getElementById('js-output-dailyGoal'),
-			outputRemainBattle = document.getElementById('js-output-remainBattle'),
-			outputDailyBattle = document.getElementById('js-output-dailyBattle');
+		const outputRemain = document.getElementById('js-output_remain'),
+			outputDailyGoal = document.getElementById('js-output_dailyGoal'),
+			outputRemainBattle = document.getElementById('js-output_remainBattle'),
+			outputDailyBattle = document.getElementById('js-output_dailyBattle');
 		// 計算結果を出力
 		outputRemain.textContent = `${calcRemain.toLocaleString()}pt.`;
 		outputDailyGoal.textContent = `${calcDailyGoal.toLocaleString()}pt.`;
@@ -46,7 +46,7 @@ document.getElementById('js-button').addEventListener('click', () => {
 			outputRemainBattle.textContent,
 				outputDailyBattle.textContent = "";
 		}
-	} else { // フォームへの入力内容が数値でない場合
+	} else { // span,goal,totalの入力内容が数値でない場合
 		alert('整数を入力してください。');
 	}
 });
