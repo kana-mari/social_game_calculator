@@ -1,15 +1,42 @@
 // 計算ボタン押下時関数を実行
 document.getElementById('js-button').addEventListener('click', () => {
-	// 関数 フォームへの入力内容を取得→整数にパース→計算→html上で表示する
-	// 入力内容を取得、数値に変換
+	// フォームへの入力内容を取得→整数にパース→計算→html上で表示する
+	/**
+	 * inputのIDを引数に指定→valueを取得して整数化して返す関数
+	 * @param {String} arg
+	 * @return {Number}
+	 */
+	const parseInput = (arg) => {
+		return parseInt(document.getElementById(arg).value, 10)
+	};
+	/**
+	 * inputの内容をまとめた連想配列
+	 * @type {Object}
+	 */
 	const getInput = {
-		span: parseInt(document.getElementById('js-input_span').value, 10), // イベント日数
-		goal: parseInt(document.getElementById('js-input_goal').value, 10), // 目標pt.
-		total: parseInt(document.getElementById('js-input_total').value, 10), // 獲得済みpt.
-		approx: parseInt(document.getElementById('js-input_approx').value, 10) // 1周回あたりの平均獲得pt.
+		/**
+		 * イベント日数
+		 * @type {Number}
+		 */
+		span: parseInput('js-input_span'),
+		/**
+		 * 目標pt.
+		 * @type {Number}
+		 */
+		goal: parseInput('js-input_goal'),
+		/**
+		 * 獲得済みpt.
+		 * @type {Number}
+		 */
+		total: parseInput('js-input_total'),
+		/**
+		 * 1周回あたりの平均獲得pt.
+		 * @type {Number}
+		 */
+		approx: parseInput('js-input_approx')
 	};
 	// span, goal, totalの入力内容をバリデーション
-	// バリデーションの共通ルール 数値・整数
+	// バリデーションの共通ルール = 数値 & NaN不可 & 整数
 	const validateForm = v8n()
 		.numeric()
 		.integer();
@@ -21,8 +48,16 @@ document.getElementById('js-button').addEventListener('click', () => {
 			.greaterThanOrEqual(0)
 			.test(getInput.total)) {
 		// 数値の場合、計算
-		const calcRemain = getInput.goal - getInput.total, // 目標までのポイント数
-			calcDailyGoal = Math.round(calcRemain / getInput.span); // 1日当たりの目標ポイント
+		/**
+		 * 目標までのポイント数
+		 * @type {Number}
+		 */
+		const calcRemain = getInput.goal - getInput.total,
+		/**
+		 * 1日当たりの目標ポイント
+		 * @type {Number}
+		 */
+			calcDailyGoal = Math.round(calcRemain / getInput.span);
 		// htmlに出力
 		// 出力先DOM取得
 		const outputRemain = document.getElementById('js-output_remain'),
