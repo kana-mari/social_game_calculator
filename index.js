@@ -3,7 +3,7 @@ document.getElementById('js-button').addEventListener('click', () => {
 	// フォームへの入力内容を取得→整数にパース→計算→html上で表示する
 	/**
 	 * inputのIDを引数に指定→valueを取得して整数化して返す関数
-	 * @param {String} arg
+	 * @param {String} arg #id
 	 * @return {Number}
 	 */
 	const parseInput = (arg) => {
@@ -35,11 +35,11 @@ document.getElementById('js-button').addEventListener('click', () => {
 		 */
 		approx: parseInput('js-input_approx')
 	};
-	// span, goal, totalの入力内容をバリデーション
-	// バリデーションの共通ルール = 数値 & NaN不可 & 整数
-	const validateForm = v8n()
+		// バリデーションの共通ルール = 数値 & NaN不可 & 整数
+		const validateForm = v8n()
 		.numeric()
 		.integer();
+	// span, goal, totalの入力内容をバリデーション
 	if (validateForm
 		.greaterThanOrEqual(1)
 		.test(getInput.span, getInput.goal)
@@ -68,7 +68,7 @@ document.getElementById('js-button').addEventListener('click', () => {
 		outputRemain.textContent = `${calcRemain.toLocaleString()}pt.`;
 		outputDailyGoal.textContent = `${calcDailyGoal.toLocaleString()}pt.`;
 
-		// approxが空欄ではなく、数値が入力されている場合、周回回数系を計算して出力
+		// approxが空欄ではなく、数値が入力されている場合→周回回数系を計算して出力
 		if (validateForm
 			.greaterThanOrEqual(1)
 			.test(getInput.approx)) {
