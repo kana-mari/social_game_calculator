@@ -35,8 +35,8 @@ document.getElementById('js-button').addEventListener('click', () => {
 		 */
 		approx: parseInput('js-input_approx')
 	};
-		// バリデーションの共通ルール = 数値 & NaN不可 & 整数
-		const validateForm = v8n()
+	// バリデーションの共通ルール = 数値 & NaN不可 & 整数
+	const validateForm = v8n()
 		.numeric()
 		.integer();
 	// span, goal, totalの入力内容をバリデーション
@@ -53,13 +53,21 @@ document.getElementById('js-button').addEventListener('click', () => {
 		 * @type {Number}
 		 */
 		const calcRemain = getInput.goal - getInput.total,
-		/**
-		 * 1日当たりの目標ポイント
-		 * @type {Number}
-		 */
+			/**
+			 * 1日当たりの目標ポイント
+			 * @type {Number}
+			 */
 			calcDailyGoal = Math.round(calcRemain / getInput.span);
 		// htmlに出力
-		// 出力先DOM取得
+		/**
+		 * 出力先DOM取得
+		 * @param arg1 {String}
+		 * @param arg2 {Number}
+		 * @returns {}
+		 */
+		const output = (arg1, arg2) => {
+			return document.getElementById(arg1).textContent = `${arg2.toLocaleString()}`;
+		};
 		const outputRemain = document.getElementById('js-output_remain'),
 			outputDailyGoal = document.getElementById('js-output_dailyGoal'),
 			outputRemainBattle = document.getElementById('js-output_remainBattle'),
