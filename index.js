@@ -3,11 +3,11 @@ document.getElementById('js-button').addEventListener('click', () => {
 	// フォームへの入力内容を取得→整数にパース→計算→html上で表示する
 	/**
 	 * inputのIDを引数に指定→valueを取得して整数化して返す関数
-	 * @param {String} arg #id
+	 * @param {String} id #id
 	 * @return {Number}
 	 */
-	const parseInput = (arg) => {
-		return parseInt(document.getElementById(arg).value, 10)
+	const parseInput = (id) => {
+		return parseInt(document.getElementById(id).value, 10)
 	};
 	/**
 	 * inputの内容をまとめた連想配列
@@ -40,6 +40,7 @@ document.getElementById('js-button').addEventListener('click', () => {
 		.numeric()
 		.integer();
 	// span, goal, totalの入力内容をバリデーション
+	// 共通ルール + 1以上 & 0以上
 	if (validateForm
 		.greaterThanOrEqual(1)
 		.test(getInput.span, getInput.goal)
@@ -47,47 +48,43 @@ document.getElementById('js-button').addEventListener('click', () => {
 		validateForm
 			.greaterThanOrEqual(0)
 			.test(getInput.total)) {
-		// 数値の場合、計算
+		// 条件を満たす場合、計算
 		/**
 		 * 目標までのポイント数
 		 * @type {Number}
 		 */
-		const calcRemain = getInput.goal - getInput.total,
-			/**
-			 * 1日当たりの目標ポイント
-			 * @type {Number}
-			 */
-			calcDailyGoal = Math.round(calcRemain / getInput.span);
+		const calcRemain = getInput.goal - getInput.total;
+		/**
+		 * 1日当たりの目標ポイント
+		 * @type {Number}
+		 */
+		const calcDailyGoal = Math.round(calcRemain / getInput.span);
 		// htmlに出力
 		/**
-		 * 出力先DOM取得
-		 * @param arg1 {String}
-		 * @param arg2 {Number}
-		 * @returns {}
+		 * 出力先DOM取得→textContentに計算結果を代入
+		 * @param id {String} 出力先要素のID
+		 * @param result {Number} 計算結果
+		 * @returns {String} 桁区切りされた計算結果
 		 */
-		const output = (arg1, arg2) => {
-			return document.getElementById(arg1).textContent = `${arg2.toLocaleString()}`;
+		const output = (id, result) => {
+			return document.getElementById(id).textContent = result.toLocaleString();
 		};
-		const outputRemain = document.getElementById('js-output_remain'),
-			outputDailyGoal = document.getElementById('js-output_dailyGoal'),
-			outputRemainBattle = document.getElementById('js-output_remainBattle'),
-			outputDailyBattle = document.getElementById('js-output_dailyBattle');
 		// 計算結果を出力
-		outputRemain.textContent = `${calcRemain.toLocaleString()}pt.`;
-		outputDailyGoal.textContent = `${calcDailyGoal.toLocaleString()}pt.`;
+		output('js-output_remain', calcRemain);
+		output('js-output_dailyGoal', calcDailyGoal);
 
 		// approxが空欄ではなく、数値が入力されている場合→周回回数系を計算して出力
 		if (validateForm
 			.greaterThanOrEqual(1)
 			.test(getInput.approx)) {
 			// 残り戦闘回数を計算して出力
-			outputRemainBattle.textContent = `${Math.ceil(calcRemain / getInput.approx).toLocaleString()}回`;
+			output('js-output_remainBattle', Math.ceil(calcRemain / getInput.approx));
 			// 1日当たりの必要出撃回数を計算して出力
-			outputDailyBattle.textContent = `${Math.ceil(calcDailyGoal / getInput.approx).toLocaleString()}回`;
+			output('js-output_dailyBattle', Math.ceil(calcDailyGoal / getInput.approx));
 		} else {
 			// 空の内容を出力
-			outputRemainBattle.textContent = "";
-			outputDailyBattle.textContent = "";
+			output('js-output_remainBattle', "");
+			output('js-output_dailyBattle', "");
 		}
 	} else { // span,goal,totalの入力内容が数値でない場合
 		alert('整数を入力してください。');
