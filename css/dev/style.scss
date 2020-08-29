@@ -1,0 +1,20 @@
+@charset "UTF-8";
+@import
+// リセットCSS
+"./bootstrap-reboot" ,
+// 基本設定
+"./base",
+// コンポーネントをインポート
+"./header",
+"./form",
+"./inputGroup",
+"./button",
+"./table",
+"./footer";
+
+body {
+	width: 100%;
+	max-width: 700px;
+	margin: 1rem auto;
+	font-family: sans-serif;
+}

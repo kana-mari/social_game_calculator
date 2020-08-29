@@ -12,7 +12,8 @@
 	<meta name="robots" content="index, follow, noarchive">
 	<!-- favicon -->
 	<link rel="icon" href="favicon.svg" type="image/svg+xml">
-	<link rel="icon alternate" href="apple-touch-icon.png" sizes="180x180" type="image/png"><!-- <= SVG favicon未対応ブラウザ用 -->
+	<link rel="icon alternate" href="apple-touch-icon.png" sizes="180x180" type="image/png">
+	<!-- <= SVG favicon未対応ブラウザ用 -->
 	<link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" type="image/png">
 	<link rel="mask-icon" href="pinned-tab-icon.svg" color="#00c853" type="image/svg+xml">
 	<!-- CSS -->
@@ -32,50 +33,63 @@
 </head>
 
 <body>
-	<main>
-		<h1><img src="favicon.svg" width="100" height="100" alt="">ソシャゲ周回回数計算</h1>
+	<main class="main">
+		<h1 class="header">
+			<img class="header__prepend" src="favicon.svg" width="100" height="100" alt="">
+			<span class="header__body">ソシャゲ周回回数計算</span></h1>
 		<p>イベント目標pt.までどのくらい頑張ればいいかを計算します。</p>
-		<form id="js-form">
-			<label for="js-input_span">残りイベント日数
-				<input type="number" id="js-input_span" min="1" step="1" placeholder="例：14" required>
-			</label>
-			<label for="js-input_goal">目標pt.
-				<input type="number" id="js-input_goal" min="1" step="1" placeholder="例：100000" required>
-			</label>
-			<label for="js-input_total">獲得済みpt.
-				<input type="number" id="js-input_total" min="0" step="1" placeholder="例：5000" required>
-			</label>
-			<label for="js-input_approx">1出撃で獲得できる平均pt.<small>（任意入力）</small>
-				<input type="number" id="js-input_approx" min="1" step="1" placeholder="例：400">
-			</label>
-			<button type="button" id="js-button">
-				<img src="img\calc-icon.svg" width="20" height="20" alt=""> 計算する
+		<form id="js-form" class="form">
+			<div class="inputGroup">
+				<label for="js-input_span" class="input-group__label">残りイベント日数</label>
+				<input type="number" class="input-group__input" id="js-input_span" min="1" step="1" placeholder="例：14" required>
+				<label for="js-input_span" class="input-group__append">日</label>
+			</div>
+			<div class="inputGroup">
+				<label for="js-input_goal" class="input-group__label">目標pt.</label>
+				<input type="number" class="input-group__input" id="js-input_goal" min="1" step="1" placeholder="例：100000"
+					required>
+				<label for="js-input_goal" class="input-group__append">pt.</label>
+			</div>
+			<div class="inputGroup">
+				<label for=" js-input_total" class="input-group__label">獲得済みpt.</label>
+				<input type="number" class="input-group__input" id="js-input_total" min="0" step="1" placeholder="例：5000"
+					required>
+				<label for="js-input_total" class="input-group__append">pt.</label>
+			</div>
+			<div class="inputGroup">
+				<label for="js-input_approx" class="input-group__label">1出撃で獲得できる平均pt.<small>（任意入力）</small></label>
+				<input type="number" class="input-group__input" id="js-input_approx" min="1" step="1" placeholder="例：400">
+				<label for="js-input_approx" class="input-group__append">pt.</label>
+			</div>
+			<button type="button" id="js-button" class="button">
+				<img class="button__prepend" src="img\calc-icon.svg" width="20" height="20" alt="">
+				<span class="button__body">計算する</span>
 			</button>
 		</form>
 
-		<table>
+		<table class="table">
 			<tbody>
-				<tr>
-					<td>目標までの残りpt.</td>
+				<tr class="table__row">
+					<th class="table__headerCell" scope="row">目標までの残りpt.</th>
 					<td><output id="js-output_remain"></output>pt.</td>
 				</tr>
-				<tr>
-					<td>1日当たりの目標pt.</td>
+				<tr class="table__row">
+					<th class="table__headerCell" scope="row">1日当たりの目標pt.</th>
 					<td><output id="js-output_dailyGoal"></output>pt.</td>
 				</tr>
-				<tr>
-					<td>目標Pt.までに必要な周回回数</td>
+				<tr class="table__row">
+					<th>目標pt.までに必要な周回回数</th>
 					<td><output id="js-output_remainBattle"></output>回</td>
 				</tr>
-				<tr>
-					<td>目標pt.までに必要な1日当たりの周回回数</td>
+				<tr class="table__row">
+					<th class="table__headerCell" scope="row">目標pt.までに必要な1日当たりの周回回数</th>
 					<td><output id="js-output_dailyBattle"></output>回</td>
 				</tr>
 			</tbody>
 		</table>
-
 	</main>
-	<footer>
+
+	<footer class="footer">
 		<address>
 			<a href="https://github.com/kana-mari" rel="noopener noreferrer" target="_blank">kana-mari (github)</a>
 		</address>
