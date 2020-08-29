@@ -19,5 +19,8 @@
   "homepage": "https://github.com/kana-mari/social_game_calculator#readme",
   "dependencies": {
     "v8n": "^1.3.3"
+  },
+  "devDependencies": {
+    "sass": "^1.26.10"
   }
 }
