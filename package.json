@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bs-start": "browser-sync start --server --files 'index.html, index.js'"
+    "bs-start": "browser-sync start --server --files 'index.html, index.js'",
+    "sass-compile": "sass css/dev/style.scss css/style.css"
   },
   "repository": {
     "type": "git",
