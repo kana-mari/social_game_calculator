@@ -479,7 +479,6 @@ body {
 }
 .inputGroup__input {
   flex: 0 1 auto;
-  width: 10rem;
 }
 .inputGroup__append {
   flex: 0 0 2rem;

@@ -1,13 +1,13 @@
 @charset "UTF-8";
-@import
-// リセットCSS
-"./bootstrap-reboot" ,
+// 
+// リセット
+@use "./bootstrap-reboot";
 // 基本設定
-"./base",
+@use "./base";
 // コンポーネントをインポート
-"./header",
-"./form",
-"./inputGroup",
-"./button",
-"./table",
-"./footer";
+@use "./header";
+@use "./form";
+@use "./inputGroup";
+@use "./button";
+@use "./table";
+@use "./footer";
