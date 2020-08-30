@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
 .form {
-	border: 1px solid #00c853;
-	padding: 1rem;
-	width: max-content;
+	border: 1px solid var(--devider-color);
 	margin-bottom: 1rem;
 }

@@ -1,2 +1,29 @@
 @charset "UTF-8";
+
 // 変数など共通設定を書く
+// CSSネイティブ変数でダークモード対応
+:root {
+	--bg-color: #FFFFFF;
+	--text-color: #333333;
+	--accent-color: #00c853;
+	--devider-color: #cfd8dc;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg-color: #263238;
+		--text-color: #FFFFFF;
+		--accent-color: #5efc82;
+		--devider-color: #455a64;
+	}
+}
+
+body {
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	width: 100%;
+	max-width: 700px;
+	margin: 1rem auto;
+	padding: 0 1rem;
+	font-family: sans-serif;
+}
