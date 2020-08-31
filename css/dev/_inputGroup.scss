@@ -18,12 +18,18 @@
 	}
 
 	&__label {
-		flex: 1 1 7rem;
+		flex: 1 1 auto;
 		margin-right: 0.25rem;
 	}
 
 	&__input {
-		flex: 0 1 auto;
+		$width: 8rem;
+		flex: 0 1 $width;
+		width: $width;
+		border: 0;
+		background-color: var(--input-bg-color);
+		line-height: 1;
+		padding-left: 0.5rem;
 	}
 
 	&__append {

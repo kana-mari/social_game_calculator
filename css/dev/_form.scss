@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
 .form {
+	width: max-content;
+	max-width: 100%;
 	border: 1px solid var(--devider-color);
 	margin-bottom: 1rem;
 }

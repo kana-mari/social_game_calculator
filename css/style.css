@@ -424,6 +424,7 @@ progress {
   --text-color: #333333;
   --accent-color: #00c853;
   --devider-color: #cfd8dc;
+  --input-bg-color: #eceff1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -432,6 +433,7 @@ progress {
     --text-color: #FFFFFF;
     --accent-color: #5efc82;
     --devider-color: #455a64;
+    --input-bg-color: #000;
   }
 }
 body {
@@ -454,6 +456,8 @@ body {
 }
 
 .form {
+  width: max-content;
+  max-width: 100%;
   border: 1px solid var(--devider-color);
   margin-bottom: 1rem;
 }
@@ -474,11 +478,16 @@ body {
   border-bottom: 0;
 }
 .inputGroup__label {
-  flex: 1 1 7rem;
+  flex: 1 1 auto;
   margin-right: 0.25rem;
 }
 .inputGroup__input {
-  flex: 0 1 auto;
+  flex: 0 1 8rem;
+  width: 8rem;
+  border: 0;
+  background-color: var(--input-bg-color);
+  line-height: 1;
+  padding-left: 0.5rem;
 }
 .inputGroup__append {
   flex: 0 0 2rem;
@@ -492,6 +501,7 @@ body {
   background-color: var(--accent-color);
   padding: 0.5rem 1rem;
   border: 0;
+  line-height: 1;
 }
 
 .table {
