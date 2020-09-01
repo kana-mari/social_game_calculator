@@ -460,7 +460,7 @@ body {
   max-width: 100%;
   margin-bottom: 1rem;
   padding: 1rem;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--devider-color);
 }
 
 .inputGroup {
@@ -508,7 +508,24 @@ body {
   width: max-content;
   max-width: 100%;
   padding: 1rem;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--devider-color);
+}
+.table__row:nth-child(even) {
+  background-color: var(--devider-color);
+}
+.table__headerCell {
+  font-weight: normal;
+  padding: 0.5rem 1rem;
+}
+.table__headerCell:first-child {
+  padding-top: 1rem;
+}
+.table__cell {
+  padding: 0.5rem 1rem 0.5rem 0;
+  text-align: end;
+}
+.table__cell:first-child {
+  padding-top: 1rem;
 }
 
 .footer {

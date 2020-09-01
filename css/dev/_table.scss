@@ -3,5 +3,22 @@
 .table {
 	width: max-content;
 	max-width: 100%;
+	padding: 1rem;
 	border: 1px solid var(--devider-color);
+
+	// 偶数行に背景色
+	&__row:nth-child(even) {
+		background-color: var(--input-bg-color);
+	}
+
+	&__headerCell {
+		font-weight: normal;
+		padding: 0.75rem 1rem;
+		width: 10rem;
+	}
+
+	&__cell {
+		padding: 0.75rem 1rem 0.75rem 0;
+		text-align: end;
+	}
 }
