@@ -1,11 +1,13 @@
 @charset "UTF-8";
 
 .button {
+	$_bg-color: #00c853;
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	color: #FFFFFF;
-	background-color: var(--accent-color);
+	background-color: $_bg-color;
 	padding: 0.5rem 1rem;
 	border: 0;
 	line-height: 1;

@@ -425,6 +425,7 @@ progress {
   --accent-color: #00c853;
   --devider-color: #cfd8dc;
   --input-bg-color: #eceff1;
+  --table-stripe-color: #eceff1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -434,6 +435,7 @@ progress {
     --accent-color: hsl(135 100% 60%);
     --devider-color: #37474f;
     --input-bg-color: #212121;
+    --table-stripe-color:#37474f;
   }
 }
 body {
@@ -496,13 +498,17 @@ body {
   justify-content: center;
   align-items: center;
   color: #FFFFFF;
-  background-color: var(--accent-color);
+  background-color: #00c853;
   padding: 0.5rem 1rem;
   border: 0;
   line-height: 1;
+  border-radius: 20px;
 }
 .button:active {
   background-color: #00e676;
+}
+.button__prepend {
+  margin-right: 0.25rem;
 }
 
 .table {
@@ -512,7 +518,7 @@ body {
   border: 1px solid var(--devider-color);
 }
 .table__row:nth-child(even) {
-  background-color: var(--devider-color);
+  background-color: var(--table-stripe-color);
 }
 .table__headerCell {
   font-weight: normal;
@@ -525,7 +531,7 @@ body {
 }
 
 .output {
-  background: linear-gradient(transparent 60%, #b2ff59 60%);
+  background: linear-gradient(transparent 60%, rgba(0, 200, 83, 0.5) 60%);
 }
 
 .footer {
