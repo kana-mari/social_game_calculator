@@ -8,6 +8,7 @@
 	--accent-color: #00c853;
 	--devider-color: #cfd8dc;
 	--input-bg-color: #eceff1;
+	--table-stripe-color: #eceff1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,6 +18,7 @@
 		--accent-color: hsl(135 100% 60%);
 		--devider-color: #37474f;
 		--input-bg-color: #212121;
+		--table-stripe-color:#37474f;
 	}
 }
 

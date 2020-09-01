@@ -8,7 +8,7 @@
 
 	// 偶数行に背景色
 	&__row:nth-child(even) {
-		background-color: var(--devider-color);
+		background-color: var(--table-stripe-color);
 	}
 
 	&__headerCell {
