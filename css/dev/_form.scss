@@ -1,8 +1,10 @@
 @charset "UTF-8";
+@use 'mixin';
 
 .form {
 	width: max-content;
 	max-width: 100%;
-	border: 1px solid var(--devider-color);
 	margin-bottom: 1rem;
+	padding: 1rem;
+	border: 1px solid var(--devider-color);
 }

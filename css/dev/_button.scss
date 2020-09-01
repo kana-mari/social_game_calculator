@@ -2,10 +2,15 @@
 
 .button {
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	color: #FFFFFF;
 	background-color: var(--accent-color);
 	padding: 0.5rem 1rem;
 	border: 0;
 	line-height: 1;
+
+	&:active {
+		background-color: #00e676;
+	}
 }
