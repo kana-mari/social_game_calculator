@@ -431,9 +431,9 @@ progress {
   :root {
     --bg-color: #263238;
     --text-color: #FFFFFF;
-    --accent-color: #5efc82;
-    --devider-color: #455a64;
-    --input-bg-color: #000;
+    --accent-color: hsl(135 100% 60%);
+    --devider-color: #37474f;
+    --input-bg-color: #212121;
   }
 }
 body {
@@ -482,6 +482,7 @@ body {
   width: 8rem;
   border: 0;
   background-color: var(--input-bg-color);
+  color: var(--text-color);
   line-height: 1;
   padding-left: 0.5rem;
 }
@@ -511,12 +512,12 @@ body {
   border: 1px solid var(--devider-color);
 }
 .table__row:nth-child(even) {
-  background-color: var(--input-bg-color);
+  background-color: var(--devider-color);
 }
 .table__headerCell {
   font-weight: normal;
-  padding: 0.75rem 1rem;
-  width: 10rem;
+  padding: 0.75rem 0.5rem 0.75rem 1rem;
+  width: 14rem;
 }
 .table__cell {
   padding: 0.75rem 1rem 0.75rem 0;
