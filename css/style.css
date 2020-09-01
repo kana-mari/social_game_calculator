@@ -511,21 +511,20 @@ body {
   border: 1px solid var(--devider-color);
 }
 .table__row:nth-child(even) {
-  background-color: var(--devider-color);
+  background-color: var(--input-bg-color);
 }
 .table__headerCell {
   font-weight: normal;
-  padding: 0.5rem 1rem;
-}
-.table__headerCell:first-child {
-  padding-top: 1rem;
+  padding: 0.75rem 1rem;
+  width: 10rem;
 }
 .table__cell {
-  padding: 0.5rem 1rem 0.5rem 0;
+  padding: 0.75rem 1rem 0.75rem 0;
   text-align: end;
 }
-.table__cell:first-child {
-  padding-top: 1rem;
+
+.output {
+  background: linear-gradient(transparent 60%, #b2ff59 60%);
 }
 
 .footer {
