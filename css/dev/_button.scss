@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@use './variables' as var;
+@use './variables'as var;
 
 .button {
 	display: flex;
@@ -12,11 +12,40 @@
 	line-height: 1;
 	border-radius: 20px;
 
+	// アニメーション
+	/* Push */
+	@keyframes hvr-push {
+		50% {
+			transform: scale(0.8);
+		}
+
+		100% {
+			transform: scale(1);
+		}
+	}
+
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+
+	&:hover,
+	&:focus,
 	&:active {
-		background-color: #00e676;
+		animation-name: hvr-push;
+		animation-duration: 0.3s;
+		animation-timing-function: linear;
+		animation-iteration-count: 1;
 	}
 
 	&__prepend {
-		margin-right: 0.25rem;
+		margin-right: 3px;
 	}
 }
+
+/*!
+ * Hover.css (http://ianlunn.github.io/Hover/)
+ * Version: 2.3.2
+ * Author: Ian Lunn @IanLunn
+ * Author URL: http://ianlunn.co.uk/
+ * Github: https://github.com/IanLunn/Hover
+ * Hover.css Copyright Ian Lunn 2017. Generated with Sass.
+ */

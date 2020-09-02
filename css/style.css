@@ -422,7 +422,7 @@ progress {
 :root {
   --bg-color: #FFFFFF;
   --text-color: #333333;
-  --accent-color: var.$accent-color;
+  --accent-color: #00c853;
   --devider-color: #cfd8dc;
   --input-bg-color: #eceff1;
   --table-stripe-color: #eceff1;
@@ -503,14 +503,36 @@ body {
   border: 0;
   line-height: 1;
   border-radius: 20px;
+  /* Push */
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
-.button:active {
-  background-color: #00e676;
+@keyframes hvr-push {
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.button:hover, .button:focus, .button:active {
+  animation-name: hvr-push;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
 }
 .button__prepend {
-  margin-right: 0.25rem;
+  margin-right: 3px;
 }
 
+/*!
+ * Hover.css (http://ianlunn.github.io/Hover/)
+ * Version: 2.3.2
+ * Author: Ian Lunn @IanLunn
+ * Author URL: http://ianlunn.co.uk/
+ * Github: https://github.com/IanLunn/Hover
+ * Hover.css Copyright Ian Lunn 2017. Generated with Sass.
+ */
 .table {
   width: max-content;
   max-width: 100%;
