@@ -6,7 +6,7 @@
 :root {
 	--bg-color: #FFFFFF;
 	--text-color: #333333;
-	--accent-color: var.$accent-color;
+	--accent-color: #{var.$accent-color};
 	--devider-color: #cfd8dc;
 	--input-bg-color: #eceff1;
 	--table-stripe-color: #eceff1;
