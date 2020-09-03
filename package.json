@@ -5,7 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"Browser-Sync": "browser-sync start --server --files 'index.html, index.js'",
-		"Sass-Compile": "sass css/dev/style.scss --style=compressed css/style.min.css",
+		"Compile:scss2css": "sass css/dev/style.scss --style=compressed css/style.min.css",
+		"Autoprefixer": "postcss css/style.min.css --use autoprefixer --output css/style.min.css",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -22,6 +23,8 @@
 		"v8n": "^1.3.3"
 	},
 	"devDependencies": {
+		"autoprefixer": "^9.8.6",
+		"postcss-cli": "^7.1.2",
 		"sass": "^1.26.10"
 	}
 }
