@@ -2,5 +2,5 @@
 @use './variables' as var;
 
 .output {
-	background: linear-gradient(transparent 60%, rgba(var.$accent-color, 0.5) 60%);
+	background: linear-gradient(transparent 60%, rgba(var.$accent-color, 0.4) 60%);
 }
