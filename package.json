@@ -4,7 +4,7 @@
 	"description": "ソーシャルゲームetc.のイベント目標pt.までどのくらい頑張ればいいかを計算します。",
 	"main": "index.js",
 	"scripts": {
-		"Compile:sass":"run-s Compile:sass2css Autoprefixer",
+		"Compile:sass-all":"run-s Compile:sass2css Autoprefixer",
 		"Browser-Sync": "browser-sync start --server --files 'index.html, src/index.js, css/style.min.css'",
 		"Compile:sass2css": "sass css/dev/style.scss --style=compressed css/style.min.css",
 		"Autoprefixer": "postcss css/style.min.css --use autoprefixer --output css/style.min.css",
