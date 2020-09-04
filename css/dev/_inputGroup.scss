@@ -3,21 +3,23 @@
 .inputGroup {
 	display: flex;
 	flex-wrap: nowrap;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: baseline;
 	margin-bottom: 1.5rem;
 
 	&__label {
-		flex: 1 1 auto;
+		flex: 0 1 11rem;
 		margin-right: 0.25rem;
 
-		&Muted {
+		&--muted {
 			color: #666;
 		}
 	}
 
 	&__input {
+		// 変数宣言
 		$width: 8rem;
+
 		flex: 0 1 $width;
 		width: $width;
 		border: 0;
@@ -25,6 +27,10 @@
 		color: var(--text-color);
 		line-height: 1;
 		padding-left: 0.5rem;
+
+		&::placeholder {
+			line-height: 1.5;
+		}
 	}
 
 	&__append {
