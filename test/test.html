@@ -5,6 +5,16 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Test</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+	crossorigin="anonymous">
+	<style>
+		.test {
+			display: none;
+			font-size: 2rem;
+			font-weight: bold;
+			color: rebeccapurple;
+		}
+	</style>
 </head>
 
 <body>
@@ -13,6 +23,21 @@
 			type="image/svg+xml" class="">
 		<img src="./../favicon.svg" width="100" height="100" alt="">
 	</picture>
+
+	<header>
+		<button id="js-test-button">テストボタン</button>
+		<div id="js-test" class="test">CSSプロパティをJSで追加</div>
+	</header>
+	<script>
+		document.getElementById('js-test-button').addEventListener('click', () => {
+			console.log('test');
+			// ボタンをクリックすると#js-testが表示されてアニメーション
+			const test = document.getElementById('js-test');
+			test.style.display = 'block';
+			test.classList.add('animate__animated', 'animate__flip');
+		})
+	</script>
+
 </body>
 
 </html>

@@ -6,6 +6,10 @@
 	padding: 1rem;
 	border: 1px solid var(--devider-color);
 
+	&--invisible {
+		display: none;
+	}
+
 	// 偶数行に背景色
 	&__row:nth-child(even) {
 		background-color: var(--table-stripe-color);

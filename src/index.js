@@ -72,6 +72,15 @@ document.getElementById('js-button').addEventListener('click', () => {
 		// 計算結果を出力
 		output('js-output_remain', calcRemain);
 		output('js-output_dailyGoal', calcDailyGoal);
+		{
+			/**
+			* tableを表示&アニメーション用クラスを付与
+			*/
+			console.log('tableアニメーション');
+			const table = document.getElementById('js-table');
+			table.classList.remove('table--invisible', 'animate__animated', 'animate__fadeIn');
+			table.classList.add('table', 'animate__animated', 'animate__fadeIn');
+		}
 
 		// approxが空欄ではなく、数値が入力されている場合→周回回数系を計算して出力
 		if (validateForm
