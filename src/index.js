@@ -75,8 +75,8 @@ document.getElementById('js-button').addEventListener('click', () => {
 		{
 			/**
 			* tableを表示&アニメーション用クラスを付与
+			* @type {HTMLElement}
 			*/
-			console.log('tableアニメーション');
 			const table = document.getElementById('js-table');
 			table.classList.remove('table--invisible', 'animate__animated', 'animate__fadeIn');
 			table.classList.add('table', 'animate__animated', 'animate__fadeIn');
