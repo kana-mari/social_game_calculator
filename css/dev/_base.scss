@@ -1,15 +1,17 @@
 @charset "UTF-8";
-@use "./variables" as var;
+@use "./variables";
 
 // 変数など共通設定を書く
 // CSSネイティブ変数でダークモード対応
 :root {
 	--bg-color: #FFFFFF;
 	--text-color: #333333;
-	--accent-color: #{var.$accent-color};
+	--accent-color: #{variables.$accent-color};
 	--devider-color: #cfd8dc;
 	--input-bg-color: #eceff1;
 	--table-stripe-color: #eceff1;
+	--link-color: #0d6efd;
+	--muted-text-color: #666666;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,7 +21,9 @@
 		--accent-color: #33ff66;
 		--devider-color: #37474f;
 		--input-bg-color: #212121;
-		--table-stripe-color:#37474f;
+		--table-stripe-color: #37474f;
+		--link-color: #90caf9;
+		--muted-text-color: #bdbdbd;
 	}
 }
 
@@ -31,4 +35,8 @@ body {
 	margin: 1rem auto;
 	padding: 0 1rem;
 	font-family: sans-serif;
+}
+
+a {
+	color: var(--link-color);
 }

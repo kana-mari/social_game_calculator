@@ -1,12 +1,12 @@
 @charset "UTF-8";
-@use './variables'as var;
+@use './variables';
 
 .button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	color: #FFFFFF;
-	background-color: var.$accent-color;
+	background-color: variables.$accent-color;
 	padding: 0.5rem 1rem;
 	border: 0;
 	line-height: 1;
