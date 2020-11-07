@@ -1,9 +1,14 @@
+/**
+ * @todo mochaでテスト書く
+ * @todo esモジュール化
+ */
+
 // 計算ボタン押下時関数を実行
 document.getElementById('js-button').addEventListener('click', () => {
 	// フォームへの入力内容を取得→整数にパース→計算→html上で表示する
 	/**
 	 * inputのIDを引数に指定→valueを取得して整数化して返す関数
-	 * @param {String} id #id
+	 * @param {String} id  - #id
 	 * @return {Number}
 	 */
 	const parseInput = (id) => {
@@ -12,6 +17,7 @@ document.getElementById('js-button').addEventListener('click', () => {
 	/**
 	 * inputの内容をまとめた連想配列
 	 * @type {Object}
+	 * @todo Mapにする
 	 */
 	const getInput = {
 		/**
