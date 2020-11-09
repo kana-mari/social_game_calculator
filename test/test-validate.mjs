@@ -8,9 +8,6 @@ describe('バリデーションのテスト 1.falseを返す', () => {
 	it('null', () => {
 		assert.isFalse(v8nCommonRule.test(null));
 	});
-	it('0', () => {
-		assert.isFalse(v8nCommonRule.test(0));
-	});
 	it('文字列', () => {
 		assert.isFalse(v8nCommonRule.test('hogehoge'));
 	});
@@ -24,5 +21,8 @@ describe('バリデーションのテスト 2.trueを返す', () => {
 	});
 	it('負の整数', () => {
 		assert.isTrue(v8nCommonRule.test(-159));
+	});
+	it('0', () => {
+		assert.isTrue(v8nCommonRule.test(0));
 	});
 });
