@@ -20,7 +20,7 @@ const isPosiInt = v8nCommonRule.greaterThanOrEqual(1);
 /**
  * 共通ルール+0以上
  */
-const isPosiInt0 = v8nCommonRule.greaterThanOrEqual(0);
+const isPosiIntAnd0 = v8nCommonRule.greaterThanOrEqual(0);
 
 // エクスポート
-export { v8nCommonRule, isPosiInt, isPosiInt0 };
+export { v8nCommonRule, isPosiInt, isPosiIntAnd0 };
