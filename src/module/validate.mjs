@@ -5,6 +5,10 @@
 import v8n from "https://unpkg.com/v8n/dist/v8n.esm.js";
 
 // input入力チェック
+const inputRule = v8n()
+.string();
+
+// inputパースチェック
 /**
  * v8n共通ルール 数値(NaN不可) && 整数
  */
