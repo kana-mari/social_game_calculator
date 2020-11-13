@@ -1,8 +1,8 @@
-import { } from "./validate.mjs";
+import { v8nCommonRule, isPosiInt, isPosiIntAnd0, inputRule } from "./validate.mjs";
 import { parse, parseNullable } from "./parse.mjs";
 
 /**
- * 
+ * input要素のvalueをmapにして返す関数
  */
 const input = function getInputAndParse() {
 	/**
