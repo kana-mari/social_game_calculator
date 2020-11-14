@@ -8,8 +8,7 @@
 		"Browser-Sync": "browser-sync start --server --files 'index.html, src/index.js, css/style.min.css'",
 		"Compile:sass2css": "sass css/dev/style.scss --style=compressed css/style.min.css",
 		"Autoprefixer": "postcss css/style.min.css --map --use autoprefixer --output css/style.min.css",
-		"Browser-Sync:moduleTest": "browser-sync start --server --startPath './test/test-runnner.html' --watch './test/*'",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"Browser-Sync:moduleTest": "browser-sync start --server --startPath './test/test-runnner.html' --watch './test/*'"
 	},
 	"repository": {
 		"type": "git",
