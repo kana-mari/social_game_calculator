@@ -2,37 +2,47 @@ import { v8nCommonRule, isPosiInt, isPosiIntAnd0, inputRule } from "./validate.m
 import { parse, parseNullable } from "./parse.mjs";
 
 /**
- * input要素のvalueをmapにして返す関数
+ * mapのキーになる値をまとめた配列
+ * @type {Array}
  */
-const input = function getInputAndParse() {
-	/**
-	 * mapのkeyをまとめた配列
-	 * @type {Array}
-	 */
-	const keyArray = [span, goal, total, approx];
-	// getElementを繰り返す
-	const span = document.getElementById(`js-input_${keyArray[0]}`);
-	const goal = document.getElementById(`js-input_${keyArray[1]}`);
-	const total = document.getElementById(`js-input_${keyArray[2]}`);
-	const approx = document.getElementById(`js-input_${keyArray[3]}`);W
+const keysArray = ['span', 'goal', 'total', 'approx'];
 
-	if (approx以外がOKな値か) {
-		/**
-		 * input要素のvalueをまとめたマップ
-		 * @type {map}
-		 */
-		const inputValues = new Map;
-		inputValues.set(hogehoge, document.getElementById(`js-input_${hogehoge}`).value);
+/**
+ * input要素の入力内容をまとめたMap
+ * @type {map<string, string>}
+ */
+const inputValueMap = new Map;
+for (const i of keysArray) {
+	inputValueMap.set(i, document.getElementById(`js-input_${i}`).value);
+}
 
-		if (approxの有無とOKな値か) {
-			// mapにapproxをset
+/**
+ * パースした値をまとめたMap
+ * @type {map<string, number>}
+ */
+const parsedValueMap = new Map;
+inputValueMap.array.forEach((value, key) => {
+	parsedValueMap.set(key, parse(value));
+});
+
+/**
+ * Mapの内容が正しいかチェックする関数
+ * @param map {Map} - 入力内容をまとめたMap
+ */
+const input = function getInputAndParse(map) {
+	// span, goal, totalが正しいかどうかチェック
+	if (isPosiInt.test(map.get('span')) && isPosiInt.test(map.get('goal')) && isPosiIntAnd0.test(map.get('total'))) {
+		// approxがNaNならapproxを削除
+		if (Number.isNaN(map.get('approx'))) {
+			map.delete('approx');
 		}
-		return inputValues;
+		return map;
 
 	} else {
 		// approx以外がNGな値の場合、例外を投げる
-		throw new Error('input要素の値が正しくない');
+		throw new Error('入力値が正しくない');
 	}
 };
-
+// テスト用のエクスポート
+export { };
 export default input;
