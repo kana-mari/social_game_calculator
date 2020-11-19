@@ -15,4 +15,19 @@ const parse = function parseInput(arg) {
 	}
 };
 
-export default parse;
+/**
+ * 空欄の場合nullを返す関数
+ * @param arg {string} - inputのvalue
+ * @returns {null} - null
+ */
+const parseAllowBlank = function parseAllowBlank(arg) {
+	if (v8n().string().length(0, 0).test(arg)) {
+		// 空欄ならnullを返す
+		return null;
+	} else {
+		// 空欄でないならparseに渡す
+		return parse(arg, 10);
+	}
+};
+
+export { parse, parseAllowBlank };
