@@ -1,5 +1,5 @@
-import { v8nCommonRule, isPosiInt, isPosiIntAnd0, inputRule } from "./validate.mjs";
-import { parse } from "./parse.mjs";
+import { isPosiInt, isPosiIntAnd0 } from "./validate.mjs";
+import { parse, parseAllowBlank } from "./parse.mjs";
 
 /**
  * mapのキーになる値をまとめた配列
@@ -18,12 +18,15 @@ for (const i of keysArray) {
 
 /**
  * パースした値をまとめたMap
- * @type {map<string, number>}
+ * @type {map<string, number | null>}
  */
 const parsedValueMap = new Map;
-inputValueMap.array.forEach((value, key) => {
-	parsedValueMap.set(key, parse(value));
-});
+// span, goal, totalをパースした値をset
+for (let i = 0; i <= 2; i++) {
+	parsedValueMap.set(keysArray[i], parse(inputValueMap.get(keysArray[i])));
+}
+// approxはparseAllowBlankする
+parsedValueMap.set(keysArray[3], parseAllowBlank(inputValueMap.get(keysArray[3])));
 
 /**
  * Mapの内容が正しいかチェックする関数
@@ -31,9 +34,9 @@ inputValueMap.array.forEach((value, key) => {
  */
 const input = function getInputAndParse(map) {
 	// span, goal, totalが正しいかどうかチェック
-	if (isPosiInt.test(map.get('span')) && isPosiInt.test(map.get('goal')) && isPosiIntAnd0.test(map.get('total'))) {
-		// approxがNaNならapproxを削除
-		if (Number.isNaN(map.get('approx'))) {
+	if (isPosiInt.test([map.get('span'), map.get('goal')]) && isPosiIntAnd0.test(map.get('total'))) {
+		// approxがnullならapproxを削除
+		if (map.get('approx') === null) {
 			map.delete('approx');
 		}
 		return map;
