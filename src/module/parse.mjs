@@ -15,4 +15,4 @@ const parse = function parseInput(arg) {
 	}
 };
 
-export { parse };
+export default parse;

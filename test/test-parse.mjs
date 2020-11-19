@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-undef
 const assert = chai.assert; // ←chaiはindex.htmlでグローバルに読み込む
 
-import { parse } from "./../src/module/parse.mjs";
+import parse from "./../src/module/parse.mjs";
 
 describe('関数parseのテスト(例外を返す)', () => {
 	it('数値にパース出来ない文字列', () => {
@@ -30,5 +30,8 @@ describe('関数parseのテスト(例外を返す)', () => {
 describe('関数parseのテスト', () => {
 	it('数値にパース出来る文字列を渡す→パースした数値を返す', () => {
 		assert.strictEqual(parse('1234'), 1234);
+	});
+	it('0文字のstingを渡す→NaNを返す', () => {
+		assert.isNaN(parse(''));
 	});
 });

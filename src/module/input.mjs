@@ -1,5 +1,5 @@
 import { v8nCommonRule, isPosiInt, isPosiIntAnd0, inputRule } from "./validate.mjs";
-import { parse, parseNullable } from "./parse.mjs";
+import { parse } from "./parse.mjs";
 
 /**
  * mapのキーになる値をまとめた配列
