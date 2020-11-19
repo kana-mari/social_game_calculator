@@ -4,10 +4,6 @@
 
 import v8n from "https://unpkg.com/v8n/dist/v8n.esm.js";
 
-// input入力チェック
-const inputRule = v8n()
-	.string();
-
 // inputパースチェック
 /**
  * v8n共通ルール 数値(NaN不可) && 整数
@@ -27,4 +23,4 @@ const isPosiInt = v8nCommonRule.greaterThanOrEqual(1);
 const isPosiIntAnd0 = v8nCommonRule.greaterThanOrEqual(0);
 
 // エクスポート
-export { v8nCommonRule, isPosiInt, isPosiIntAnd0, inputRule };
+export { v8nCommonRule, isPosiInt, isPosiIntAnd0 };
