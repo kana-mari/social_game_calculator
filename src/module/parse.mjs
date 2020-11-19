@@ -15,17 +15,4 @@ const parse = function parseInput(arg) {
 	}
 };
 
-/**
- * nullを0にパースする関数
- * @param arg {string} - 
- * @return {number} - nullなら0、それ以外はparseと同じ
- */
-const parseNullable = function parseNullable(arg) {
-	if (arg === null) {
-		return 0;
-	} else {
-		return parse(arg);
-	}
-};
-
-export { parse, parseNullable };
+export { parse };
