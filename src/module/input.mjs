@@ -2,31 +2,24 @@ import { isPosiInt, isPosiIntAnd0 } from "./validate.mjs";
 import { parse, parseAllowBlank } from "./parse.mjs";
 
 /**
- * mapのキーになる値をまとめた配列
+ * Mapのキーになる値をまとめた配列
  * @type {Array}
  */
 const keysArray = ['span', 'goal', 'total', 'approx'];
 
 /**
- * input要素の入力内容をまとめたMap
- * @type {map<string, string>}
- */
-const inputValueMap = new Map;
-for (const i of keysArray) {
-	inputValueMap.set(i, document.getElementById(`js-input_${i}`).value);
-}
-
-/**
  * パースした値をまとめたMap
- * @type {map<string, number | null>}
+ * @type {Map<string, number | null>}
  */
 const parsedValueMap = new Map;
 // span, goal, totalをパースした値をset
 for (let i = 0; i <= 2; i++) {
-	parsedValueMap.set(keysArray[i], parse(inputValueMap.get(keysArray[i])));
+	parsedValueMap.set(keysArray[i], parse(document.getElementById(`js-input_${keysArray[i]}`).value));
 }
 // approxはparseAllowBlankする
-parsedValueMap.set(keysArray[3], parseAllowBlank(inputValueMap.get(keysArray[3])));
+parsedValueMap.set(keysArray[3], parseAllowBlank(document.getElementById(`js-input_${keysArray[3]}`).value));
+
+console.log(parsedValueMap);
 
 /**
  * Mapの内容が正しいかチェックする関数
@@ -40,12 +33,12 @@ const input = function getInputAndParse(map) {
 			map.delete('approx');
 		}
 		return map;
-
 	} else {
 		// approx以外がNGな値の場合、例外を投げる
 		throw new Error('入力値が正しくない');
 	}
 };
+
 // テスト用のエクスポート
 export { };
 export default input;
