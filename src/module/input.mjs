@@ -19,8 +19,6 @@ for (let i = 0; i <= 2; i++) {
 // approxはparseAllowBlankする
 parsedValueMap.set(keysArray[3], parseAllowBlank(document.getElementById(`js-input_${keysArray[3]}`).value));
 
-console.log(parsedValueMap);
-
 /**
  * Mapの内容が正しいかチェックする関数
  * @param map {Map} - 入力内容をまとめたMap
@@ -40,5 +38,7 @@ const input = function getInputAndParse(map) {
 };
 
 // テスト用のエクスポート
-export { };
+export { keysArray, parsedValueMap };
+
+// 本番用のエクスポート
 export default input;
