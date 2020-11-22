@@ -1,67 +1,67 @@
 // eslint-disable-next-line no-undef
 const assert = chai.assert; // ←chaiはindex.htmlでグローバルに読み込む
 
-import { parse, parseAllowBlank } from "./../src/module/parse.mjs";
+import parse from "./../src/module/parse.mjs";
 
-describe('関数parseのテスト(例外を返す)', () => {
+describe('parseInputメソッドのテスト(例外を返す)', () => {
 	it('数値にパース出来ない文字列', () => {
-		assert.throws(() => { parse('hogehoge') }, Error);
+		assert.throws(() => { parse.parseInput('hogehoge') }, Error);
 	});
 	it('オブジェクト', () => {
-		assert.throws(() => { parse({ key: '100' }) }, Error);
+		assert.throws(() => { parse.parseInput({ key: '100' }) }, Error);
 	});
 	it('配列', () => {
-		assert.throws(() => { parse(['1000']) }, Error);
+		assert.throws(() => { parse.parseInput(['1000']) }, Error);
 	});
 	it('NaN', () => {
-		assert.throws(() => { parse(NaN) }, Error);
+		assert.throws(() => { parse.parseInput(NaN) }, Error);
 	});
 	it('Number', () => {
-		assert.throws(() => { parse(100) }, Error);
+		assert.throws(() => { parse.parseInput(100) }, Error);
 	});
 	it('null', () => {
-		assert.throws(() => { parse(null) }, Error);
+		assert.throws(() => { parse.parseInput(null) }, Error);
 	});
 	it('undefined', () => {
-		assert.throws(() => { parse(undefined) }, Error);
+		assert.throws(() => { parse.parseInput(undefined) }, Error);
 	});
 });
 
-describe('関数parseのテスト', () => {
+describe('parseInputメソッドのテスト（正常系）', () => {
 	it('数値にパース出来る文字列を渡す→パースした数値を返す', () => {
-		assert.strictEqual(parse('1234'), 1234);
+		assert.strictEqual(parse.parseInput('1234'), 1234);
 	});
 });
 
-describe('関数parseAllowBlankのテスト(例外を返す)', () => {
+describe('関数parseAllowBlankのテスト(例外系)', () => {
 	it('数値にパース出来ない文字列', () => {
-		assert.throws(() => { parseAllowBlank('hogehoge') }, Error);
+		assert.throws(() => { parse.allowBlank('hogehoge') }, Error);
 	});
 	it('オブジェクト', () => {
-		assert.throws(() => { parseAllowBlank({ key: '100' }) }, Error);
+		assert.throws(() => { parse.allowBlank({ key: '100' }) }, Error);
 	});
 	it('配列', () => {
-		assert.throws(() => { parseAllowBlank(['1000']) }, Error);
+		assert.throws(() => { parse.allowBlank(['1000']) }, Error);
 	});
 	it('NaN', () => {
-		assert.throws(() => { parseAllowBlank(NaN) }, Error);
+		assert.throws(() => { parse.allowBlank(NaN) }, Error);
 	});
 	it('Number', () => {
-		assert.throws(() => { parseAllowBlank(100) }, Error);
+		assert.throws(() => { parse.allowBlank(100) }, Error);
 	});
 	it('null', () => {
-		assert.throws(() => { parseAllowBlank(null) }, Error);
+		assert.throws(() => { parse.allowBlank(null) }, Error);
 	});
 	it('undefined', () => {
-		assert.throws(() => { parseAllowBlank(undefined) }, Error);
+		assert.throws(() => { parse.allowBlank(undefined) }, Error);
 	});
 });
 
-describe('関数parseAllowBlankのテスト(OK)', () => {
+describe('AllowBlankメソッドのテスト(正常系)', () => {
 	it('length0の文字列を渡す→nullを返す', () => {
-		assert.isNull(parseAllowBlank(''));
+		assert.isNull(parse.allowBlank(''));
 	});
 	it('数値にパース出来る文字列を渡す→パースした数値を返す', () => {
-		assert.strictEqual(parse('1234'), 1234);
+		assert.strictEqual(parse.allowBlank('1234'), 1234);
 	});
 });
