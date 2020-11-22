@@ -9,7 +9,7 @@ import v8n from "https://unpkg.com/v8n/dist/v8n.esm.js";
  * @param arg {string} - inputのvalue
  * @returns {number} - 引数をパースした数値
  */
-const parse = {
+const Parse = class Parse {
 	/**
 	 * 10進数にパースするメソッド
 	 * @param arg {string} - 数字からなる文字列
@@ -21,7 +21,7 @@ const parse = {
 		} else {
 			throw new Error('引数が数値で構成された文字列でない');
 		}
-	},
+	}
 
 	/**
 	 * 空欄の場合nullを返すメソッド
@@ -39,4 +39,4 @@ const parse = {
 	}
 };
 
-export default parse;
+export default Parse;

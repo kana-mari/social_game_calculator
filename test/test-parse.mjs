@@ -1,7 +1,8 @@
 // eslint-disable-next-line no-undef
 const assert = chai.assert; // ←chaiはindex.htmlでグローバルに読み込む
 
-import parse from "./../src/module/parse.mjs";
+import Parse from "./../src/module/parse.mjs";
+const parse = new Parse();
 
 describe('parseInputメソッドのテスト(例外を返す)', () => {
 	it('数値にパース出来ない文字列', () => {
@@ -33,7 +34,7 @@ describe('parseInputメソッドのテスト（正常系）', () => {
 	});
 });
 
-describe('関数parseAllowBlankのテスト(例外系)', () => {
+describe('parseAllowBlankメソッドのテスト(例外系)', () => {
 	it('数値にパース出来ない文字列', () => {
 		assert.throws(() => { parse.allowBlank('hogehoge') }, Error);
 	});
