@@ -1,5 +1,14 @@
+// モジュールインポート
 import { isPosiInt, isPosiIntAnd0 } from "./validate.mjs";
-import { parse, parseAllowBlank } from "./parse.mjs";
+import Parse from "./parse.mjs";
+
+/**
+ * 
+ */
+const parse = new Parse();
+
+// マップ関連まとめたい
+const Hogehoge = class makeParsedValueMap { };
 
 /**
  * Mapのキーになる値をまとめた配列
@@ -14,10 +23,10 @@ const keysArray = ['span', 'goal', 'total', 'approx'];
 const parsedValueMap = new Map;
 // span, goal, totalをパースした値をset
 for (let i = 0; i <= 2; i++) {
-	parsedValueMap.set(keysArray[i], parse(document.getElementById(`js-input_${keysArray[i]}`).value));
+	parsedValueMap.set(keysArray[i], parse.parseInput(document.getElementById(`js-input_${keysArray[i]}`).value));
 }
-// approxはparseAllowBlankする
-parsedValueMap.set(keysArray[3], parseAllowBlank(document.getElementById(`js-input_${keysArray[3]}`).value));
+// approxはparse.allowBlankしてset
+parsedValueMap.set(keysArray[3], parse.allowBlank(document.getElementById(`js-input_${keysArray[3]}`).value));
 
 /**
  * Mapの内容が正しいかチェックする関数
