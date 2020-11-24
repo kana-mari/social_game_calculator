@@ -9,6 +9,7 @@ const parse = new Parse();
 
 /**
  * input内容をまとめたMapを作成するクラス
+ * @returns {Map<string, number>}
  */
 const MakeMap = class makeParsedValueMap {
 	constructor() {
@@ -20,36 +21,29 @@ const MakeMap = class makeParsedValueMap {
 
 		/**
 		 * パースした値をまとめたMap
-		 * @type {Map<string, number | null>}
+		 * @type {Map<string, number>}
 		 */
-		const parsedValueMap = new Map;
+		const map = new Map;
 
 		// 値をset
-		// span, goal, totalをパースした値をset
-		for (let i = 0; i <= 2; i++) {
-			parsedValueMap.set(keys[i], parse.parseInput(document.getElementById(`js-input_${keys[i]}`).value));
+		for (const i of keys) {
+			// inputが入力されていればset
+			if (!isBlank.test(document.getElementById(`js-input_${i}`).value)) {
+				map.set(i, parse.parseInput(document.getElementById(`js-input_${i}`).value));
+			}
 		}
-
-		/**
-		 * approxの入力内容をget
-		 */
-		const approx = document.getElementById('js-input_approx').value;
-		// 空欄でなければapproxをset
-		if (!isBlank.test(approx)) {
-			parsedValueMap.set(keys[3], parse.parseInput(document.getElementById(`js-input_${keys[3]}`).value));
-		}
-		return parsedValueMap;
+		return map;
 	}
 };
 
 /**
  * Mapの内容が正しいかチェックする
  * @param map {Map} - input内容をまとめたMap
- * @returns {Map} - 
+ * @returns {boolean}
  */
 const validateInput = function validateInputMap(map) {
-	// map.sizeが3なら3つチェック、4なら4つチェック
-	// 3・4以外なら例外を投げる
+	// map.sizeが3→3項目チェック、4→4項目チェック
+	// sizeが3・4以外なら例外を投げる
 	switch (map.size) {
 		case 3:
 			isPosiInt.test([map.get('span'), map.get('goal')]) && isPosiIntAnd0.test(map.get('total'));
