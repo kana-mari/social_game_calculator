@@ -30,12 +30,12 @@ describe('MakeMapのテスト（正常系）', () => {
 
 // CheckMapテスト用Map
 const testMapSize3True = new Map([['span', 7], ['goal', 1000], ['total', 100]]);
-const testMapSize4True = new Map(testMapSize3True)
+const testMapSize4True = new Map(testMapSize3True);
 testMapSize4True.set('approx', 100);
 
 const testMapSize3False = new Map([['span', NaN], ['goal', ''], ['total', null]]);
-const testMapSize4False = testMapSize3False.
-	testMapSize4False.set('approx', '1000');
+const testMapSize4False = new Map(testMapSize3False);
+testMapSize4False.set('approx', '1000');
 
 describe('CheckMapのテスト（正常系）', () => {
 	it('size=3のMap(values=number)を渡す→trueを返す', () => {
