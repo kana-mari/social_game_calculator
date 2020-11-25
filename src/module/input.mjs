@@ -37,11 +37,11 @@ const MakeMap = class makeParsedValueMap {
 };
 
 /**
- * Mapの内容が正しいかチェックする
- * @param map {Map} - input内容をまとめたMap
- * @returns {boolean}
+ * Mapの内容が正しいかチェックする関数
+ * @param map {Map<string, number>} - input内容をまとめたMap
+ * @returns {boolean} - valueのチェック結果
  */
-const validateInput = function validateInputMap(map) {
+const checkMap = function checkInputMap(map) {
 	// map.sizeが3→3項目チェック、4→4項目チェック
 	// sizeが3・4以外なら例外を投げる
 	switch (map.size) {
@@ -54,11 +54,11 @@ const validateInput = function validateInputMap(map) {
 			break;
 
 		default:
-			throw new Error('入力値が正しくない');
+			throw new RangeError('Map.sizeは3か4でなければならない');
 	}
 };
 
 // テスト用のエクスポート
-export { MakeMap };
+export { MakeMap, checkMap };
 
 // 本番用のエクスポート
