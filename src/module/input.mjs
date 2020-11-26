@@ -11,7 +11,7 @@ const parse = new Parse();
  * input内容をまとめたMapを作成するクラス
  * @returns {Map<string, number>}
  */
-const MakeMap = class makeParsedValueMap {
+const InputMap = class makeParsedValueMap {
 	constructor() {
 		/**
 		* Mapのキーになる値をまとめた配列
@@ -59,6 +59,4 @@ const checkMap = function checkInputMap(map) {
 };
 
 // テスト用のエクスポート
-export { MakeMap, checkMap };
-
-// 本番用のエクスポート
+export { InputMap, checkMap };
