@@ -46,11 +46,11 @@ const checkMap = function checkInputMap(map) {
 	// sizeが3・4以外なら例外を投げる
 	switch (map.size) {
 		case 3:
-			isPosiInt.test([map.get('span'), map.get('goal')]) && isPosiIntAnd0.test(map.get('total'));
+			return isPosiInt.test(map.get('span')) && isPosiInt.test(map.get('goal')) && isPosiIntAnd0.test(map.get('total'));
 			break;
 
 		case 4:
-			isPosiInt.test([map.get('span'), map.get('goal'), map.get('approx')]) && isPosiIntAnd0.test(map.get('total'));
+			return isPosiInt.test(map.get('span')) && isPosiInt.test(map.get('goal')) && isPosiIntAnd0.test(map.get('total')) && isPosiInt.test(map.get('approx'));
 			break;
 
 		default:
