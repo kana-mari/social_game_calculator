@@ -3,7 +3,7 @@ const assert = chai.assert; // ←chaiはindex.htmlでグローバルに読み�
 
 import { InputMap, checkMap } from "./../src/module/input.mjs";
 
-// Green
+// Red
 
 // インスタンスの初期化
 const inputMap = new InputMap();
@@ -25,7 +25,7 @@ describe('MakeMapのテスト（正常系）', () => {
 	});
 });
 /**
- * @todo MakeMapの例外系テスト
+ * @todo InputMapの例外系テスト
  */
 
 // CheckMapテスト用Map
@@ -47,7 +47,7 @@ describe('CheckMapのテスト（正常系）', () => {
 	it('size=3のMap(values!=number)を渡す→falseを返す', () => {
 		assert.isFalse(checkMap(testMapSize3False));
 	});
-	it('size=4のMap(values!=number)を渡す→真偽値を返す', () => {
+	it('size=4のMap(values!=number)を渡す→falseを返す', () => {
 		assert.isFalse(checkMap(testMapSize4False));
 	});
 });
@@ -65,27 +65,27 @@ describe('CheckMapのテスト（例外系）', () => {
 		});
 	});
 	it('valueがnumberでないMapを渡す', () => {
-		assert.throws(() => {
+		assert.isFlase(
 			checkMap(testMapSize3False), RangeError
-		});
+		);
 	});
 	it('keyにspan, goal, totalを含まないMap(size=3)を渡す', () => {
-		assert.throws(() => {
+		assert.isFlase(
 			checkMap(new Map([
 				['hogehoge', 1],
 				['hogehoge2', 2],
 				['hogehoge3', 3],
 			])), RangeError
-		});
+		);
 	});
 	it('keyにspan, goal, total,approxを含まないMap(size=4)を渡す', () => {
-		assert.throws(() => {
+		assert.isFlase(
 			checkMap(new Map([
 				['hogehoge', 1],
 				['hogehoge2', 2],
 				['hogehoge3', 3],
 				['hogehoge4', 4]
 			])), RangeError
-		});
+		);
 	});
 });
