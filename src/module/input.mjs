@@ -52,12 +52,17 @@ const checkMap = function checkInputMap(map) {
 	switch (map.size) {
 		case 3:
 			// Mapの各要素をチェック span, goal, totalがOKならtrue
-			result = isPosiInt.test(map.get('span')) && isPosiInt.test(map.get('goal')) && isPosiIntAnd0.test(map.get('total'));
+			result = isPosiInt.test(map.get('span'))
+				&& isPosiInt.test(map.get('goal'))
+				&& isPosiIntAnd0.test(map.get('total'));
 			break;
 
 		case 4:
 			// Mapの各要素をチェック span, goal, total, approxがOKならtrue
-			result = isPosiInt.test(map.get('span')) && isPosiInt.test(map.get('goal')) && isPosiIntAnd0.test(map.get('total')) && isPosiInt.test(map.get('approx'));
+			result = isPosiInt.test(map.get('span'))
+				&& isPosiInt.test(map.get('goal'))
+				&& isPosiIntAnd0.test(map.get('total'))
+				&& isPosiInt.test(map.get('approx'));
 			break;
 
 		default:
@@ -66,5 +71,22 @@ const checkMap = function checkInputMap(map) {
 	return result;
 };
 
+/**
+ * 上記モジュールをまとめたクラス
+ */
+const Input = class InputModule {
+	constructor() {
+		const inputMap = new InputMap();
+		if (checkMap(inputMap)) {
+			return inputMap;
+		} else {
+			throw new Error('入力内容が正しくない');
+		}
+	};
+};
+
 // テスト用のエクスポート
 export { InputMap, checkMap };
+
+// 本番用エクスポート
+export default Input;
