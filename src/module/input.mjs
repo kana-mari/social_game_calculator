@@ -42,20 +42,28 @@ const InputMap = class makeParsedValueMap {
  * @returns {boolean} - valueのチェック結果
  */
 const checkMap = function checkInputMap(map) {
+	/**
+	 * validate結果を格納する変数 変更可能
+	 * @type {boolean}
+	 */
+	let result = "";
 	// map.sizeが3→3項目チェック、4→4項目チェック
 	// sizeが3・4以外なら例外を投げる
 	switch (map.size) {
 		case 3:
-			return isPosiInt.test(map.get('span')) && isPosiInt.test(map.get('goal')) && isPosiIntAnd0.test(map.get('total'));
+			// Mapの各要素をチェック span, goal, totalがOKならtrue
+			result = isPosiInt.test(map.get('span')) && isPosiInt.test(map.get('goal')) && isPosiIntAnd0.test(map.get('total'));
 			break;
 
 		case 4:
-			return isPosiInt.test(map.get('span')) && isPosiInt.test(map.get('goal')) && isPosiIntAnd0.test(map.get('total')) && isPosiInt.test(map.get('approx'));
+			// Mapの各要素をチェック span, goal, total, approxがOKならtrue
+			result = isPosiInt.test(map.get('span')) && isPosiInt.test(map.get('goal')) && isPosiIntAnd0.test(map.get('total')) && isPosiInt.test(map.get('approx'));
 			break;
 
 		default:
 			throw new RangeError('Map.sizeは3か4でなければならない');
 	}
+	return result;
 };
 
 // テスト用のエクスポート
