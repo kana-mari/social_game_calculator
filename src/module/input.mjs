@@ -27,7 +27,7 @@ const InputMap = class makeParsedValueMap {
 
 		// 値をset
 		for (const i of keys) {
-			// inputが入力されていればset
+			// input要素が入力されていれば、mapにvalueをset
 			if (!isBlank.test(document.getElementById(`js-input_${i}`).value)) {
 				map.set(i, parse.parseInput(document.getElementById(`js-input_${i}`).value));
 			}
@@ -82,7 +82,7 @@ const Input = class InputModule {
 		} else {
 			throw new Error('入力内容が正しくない');
 		}
-	};
+	}
 };
 
 // テスト用のエクスポート
