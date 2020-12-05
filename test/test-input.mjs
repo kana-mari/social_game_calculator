@@ -3,7 +3,7 @@ const assert = chai.assert; // ←chaiはindex.htmlでグローバルに読み�
 
 import { InputMap, checkMap } from "./../src/module/input.mjs";
 import Input from "./../src/module/input.mjs";
-import { describe } from "mocha";
+
 // Green
 
 // インスタンスの初期化
@@ -56,13 +56,6 @@ describe('CheckMapのテスト（正常系）', () => {
 });
 
 describe('CheckMapのテスト（例外系）', () => {
-	/** 
-	 * Map.size !== 3 || 4
-	 * typeof value !== number
-	 * value === NaN || infinity
-	 * keyが変
-	 **/
-
 	const testMapSize3hoge = new Map([
 		['hogehoge', 1],
 		['hogehoge2', 2],
@@ -87,19 +80,10 @@ describe('Inputのテスト（正常系）', () => {
 	it('Mapを返す', () => {
 		assert.instanceOf(input, Map);
 	});
-	it('返り値のMap.sizeが3 or 4', () => {
-		assert.strictEqual(input.size, 3 || 4);
+	it('返り値のMap.sizeが3', () => {
+		assert.strictEqual(input.size, 3);
 	});
-});
-
-describe('Inputのテスト（例外系）', () => {
-	it('input要素が全部空欄→例外を投げる', () => {
-		assert.throws(input, RangeError);
+	it('返り値のMap.sizeが4', () => {
+		assert.strictEqual(input.size, 4);
 	});
-	// it('', () => {
-	// 	assert.throws(() => { }, Error);
-	// });
-	// it('', () => {
-	// 	assert.throws(() => { }, Error);
-	// });
 });
