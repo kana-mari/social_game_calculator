@@ -1,16 +1,52 @@
 /**
  * @fileoverview バリデーション系のモジュール
+ * @todo バラバラの変数をオブジェクトにまとめる
  */
 
 import v8n from "https://unpkg.com/v8n/dist/v8n.esm.js";
+
+/**
+ * v8nでのバリデート条件をまとめたクラス getterで書く
+ * @type {class}
+ */
+const Validate = class v8nValidate {
+	constructor() { }
+	get isNotBlank() {
+		return (
+			v8n()
+				.string()
+				.minLength(1)
+		);
+	}
+	get isBlank() {
+		return (
+			v8n()
+				.string()
+				.length(0, 0)
+		);
+	}
+	get v8nCommonRule() {
+		return (
+			v8n()
+				.numeric()
+				.integer()
+		);
+	}
+	get isPosiInt() {
+		return this.v8nCommonRule.greaterThanOrEqual(1);
+	}
+	get isPosiIntAnd0() {
+		return this.v8nCommonRule.greaterThanOrEqual(0);
+	}
+};
 
 // パース前の入力内容チェック
 /**
  * inputが空欄かどうか
  */
 const isBlank = v8n()
-.string()
-.length(0, 0);
+	.string()
+	.length(0, 0);
 
 // inputパースチェック
 /**
@@ -31,4 +67,4 @@ const isPosiInt = v8nCommonRule.greaterThanOrEqual(1);
 const isPosiIntAnd0 = v8nCommonRule.greaterThanOrEqual(0);
 
 // エクスポート
-export { v8nCommonRule, isPosiInt, isPosiIntAnd0, isBlank };
+export { v8nCommonRule, isPosiInt, isPosiIntAnd0, isBlank, Validate };
