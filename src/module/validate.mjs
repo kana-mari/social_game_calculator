@@ -1,5 +1,5 @@
 /**
- * @fileoverview バリデーション系のモジュール
+ * @file バリデーション系のモジュール
  */
 
 import v8n from "https://unpkg.com/v8n/dist/v8n.esm.js";
@@ -12,7 +12,7 @@ const Validate = class v8nValidate {
 	constructor() { }
 	/**
 	 * 入力内容が空欄かどうか確認するメソッド
-	 * @todo .emptyを試す
+	 * @todo .lengthを.emptyに置き換える
 	 */
 	get isBlank() {
 		return (
@@ -32,7 +32,8 @@ const Validate = class v8nValidate {
 		);
 	}
 	/**
-	 * v8n共通ルール 数値(NaN不可) && 整数
+	 * v8n共通ルール 数値(Infinity・NaN不可) && 整数
+	* @todo .positive追加
 	 */
 	get v8nCommonRule() {
 		return (
@@ -43,15 +44,14 @@ const Validate = class v8nValidate {
 	}
 	/**
 	 * 共通ルール+1以上
-	 * @todo .positiveを試す
 	 */
 	get isPosiInt() {
 		return this.v8nCommonRule.greaterThanOrEqual(1);
 	}
 	/**
  * 共通ルール+0以上
+ * greaterThanOrEqual(0)を削除
  */
-
 	get isPosiIntAnd0() {
 		return this.v8nCommonRule.greaterThanOrEqual(0);
 	}
@@ -66,7 +66,7 @@ const isBlank = v8n()
 
 // inputパースチェック
 /**
- * v8n共通ルール 数値(NaN不可) && 整数
+ * v8n共通ルール 数値(Infinity・NaN不可) && 整数
  */
 const v8nCommonRule = v8n()
 	.numeric()
@@ -82,6 +82,14 @@ const isPosiInt = v8nCommonRule.greaterThanOrEqual(1);
  */
 const isPosiIntAnd0 = v8nCommonRule.greaterThanOrEqual(0);
 
-// エクスポート
+/**
+ * 名前付きエクスポート
+ * @deprecated 互換性のため一時的に残す
+ * @todo テスト完了したら消す
+ */
 export { v8nCommonRule, isPosiInt, isPosiIntAnd0, isBlank };
+/**
+ * デフォルトエクスポート
+ * @exports Validate
+ */
 export default Validate;
