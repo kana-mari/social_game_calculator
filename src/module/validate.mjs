@@ -18,7 +18,7 @@ const Validate = class v8nValidate {
 		return (
 			v8n()
 				.string()
-				.length(0, 0)
+				.empty()
 		);
 	}
 	/**
