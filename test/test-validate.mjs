@@ -2,27 +2,58 @@
 const assert = chai.assert; // ←chaiはindex.htmlでグローバルに読み込む
 
 // 対象モジュールをインポート
-import { v8nCommonRule } from "./../src/module/validate.mjs";
+import Validate from "./../src/module/validate.mjs";
+const validate = new Validate();
 
-describe('バリデーションのテスト 1.falseを返す', () => {
-	it('null', () => {
-		assert.isFalse(v8nCommonRule.test(null));
+describe('isBlankプロパティのテスト', () => {
+	// true
+	it('空の文字列を渡す→trueを返す', () => {
+		assert.isTrue(validate.isBlank.test(''));
 	});
-	it('文字列', () => {
-		assert.isFalse(v8nCommonRule.test('hogehoge'));
+	// false
+	it('1文字以上の文字列を渡す→Falseを返す', () => {
+		assert.isFalse(validate.isBlank.test('hogehoge'));
 	});
-	it('実数', () => {
-		assert.isFalse(v8nCommonRule.test(3.14));
+	it('オブジェクトを渡す→Falseを返す', () => {
+		assert.isFalse(validate.isBlank.test({ 'test': '' }));
+	});
+	it('配列を渡す→Falseを返す', () => {
+		assert.isFalse(validate.isBlank.test(['']));
+	});
+	it('数値を渡す→Falseを返す', () => {
+		assert.isFalse(validate.isBlank.test(1));
+	});
+	it('nullを渡す→Falseを返す', () => {
+		assert.isFalse(validate.isBlank.test(null));
+	});
+	it('真偽値を渡す→Falseを返す', () => {
+		assert.isFalse(validate.isBlank.test(true));
+	});
+	it('undefinedを渡す→Falseを返す', () => {
+		assert.isFalse(validate.isBlank.test(undefined));
 	});
 });
-describe('バリデーションのテスト 2.trueを返す', () => {
-	it('正の整数', () => {
-		assert.isTrue(v8nCommonRule.test(812255));
-	});
-	it('負の整数', () => {
-		assert.isTrue(v8nCommonRule.test(-159));
-	});
-	it('0', () => {
-		assert.isTrue(v8nCommonRule.test(0));
-	});
-});
+
+// describe('isNotBlankプロパティのテスト', () => {
+// 	it('', () => {
+// 		assert();
+// 	});
+// });
+
+// describe('v8nCommonRuleプロパティのテスト', () => {
+// 	it('', () => {
+// 		assert();
+// 	});
+// });
+
+// describe('isPosiIntプロパティのテスト', () => {
+// 	it('', () => {
+// 		assert();
+// 	});
+// });
+
+// describe('isPosiIntAnd0プロパティのテスト', () => {
+// 	it('', () => {
+// 		assert();
+// 	});
+// });
