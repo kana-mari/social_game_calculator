@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-undef
 const assert = chai.assert; // ←chaiはindex.htmlでグローバルに読み込む
 
 // 対象モジュールをインポート
@@ -70,10 +69,10 @@ describe('isPosiIntプロパティのテスト', () => {
 		assert.isTrue(validate.isPosiInt.test(10));
 		assert.isTrue(validate.isPosiInt.test(100000));
 	});
-	it('0を渡す→Trueを返す', () => {
-		assert.isTrue(validate.isPosiInt.test(0));
-	});
 	// false
+	it('0を渡す→Falseを返す', () => {
+		assert.isFalse(validate.isPosiInt.test(0));
+	});
 	it('NaNを渡す→Falseを返す', () => {
 		assert.isFalse(validate.isPosiInt.test(NaN));
 	});
@@ -122,6 +121,9 @@ describe('isPosiIntAnd0プロパティのテスト', () => {
 		assert.isTrue(validate.isPosiIntAnd0.test(10));
 		assert.isTrue(validate.isPosiIntAnd0.test(100000));
 	});
+	it('0を渡す→Trueを返す', () => {
+		assert.isTrue(validate.isPosiIntAnd0.test(0));
+	});
 	// false
 	it('NaNを渡す→Falseを返す', () => {
 		assert.isFalse(validate.isPosiIntAnd0.test(NaN));
@@ -140,9 +142,6 @@ describe('isPosiIntAnd0プロパティのテスト', () => {
 	it('負の実数を渡す→Falseを返す', () => {
 		assert.isFalse(validate.isPosiIntAnd0.test(-0.1));
 		assert.isFalse(validate.isPosiIntAnd0.test(-100.01));
-	});
-	it('0を渡す→Falseを返す', () => {
-		assert.isFalse(validate.isPosiIntAnd0.test(0));
 	});
 	it('nullを渡す→Falseを返す', () => {
 		assert.isFalse(validate.isPosiIntAnd0.test(null));
