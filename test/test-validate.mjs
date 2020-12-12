@@ -162,3 +162,36 @@ describe('isPosiIntAnd0プロパティのテスト', () => {
 		assert.isFalse(validate.isPosiIntAnd0.test({ 'test': 1 }));
 	});
 });
+
+describe('isNumericStrプロパティのテスト', () => {
+	// true
+	it('数字列を渡す', () => {
+		assert.isTrue(validate.isNumericStr.test('123456'));
+	});
+	// false
+	it('数字とそのほかの文字が混在した文字列を渡す→Falseを返す', () => {
+		assert(validate.isNumericStr.test('1000%'));
+		assert(validate.isNumericStr.test('-1000'));
+	});
+	it('空文字を渡す→Falseを返す', () => {
+		assert.isFalse(validate.isNumericStr.test(''));
+	});
+	it('オブジェクトを渡す→Falseを返す', () => {
+		assert.isFalse(validate.isNumericStr.test({ 'test': '' }));
+	});
+	it('配列を渡す→Falseを返す', () => {
+		assert.isFalse(validate.isNumericStr.test(['']));
+	});
+	it('数値を渡す→Falseを返す', () => {
+		assert.isFalse(validate.isNumericStr.test(1));
+	});
+	it('nullを渡す→Falseを返す', () => {
+		assert.isFalse(validate.isNumericStr.test(null));
+	});
+	it('真偽値を渡す→Falseを返す', () => {
+		assert.isFalse(validate.isNumericStr.test(true));
+	});
+	it('undefinedを渡す→Falseを返す', () => {
+		assert.isFalse(validate.isNumericStr.test(undefined));
+	});
+});

@@ -53,6 +53,17 @@ const Validate = class v8nValidate {
 	get isPosiIntAnd0() {
 		return this.commonRule;
 	}
+
+	/**
+	 * 数字列かどうかチェックする
+	 */
+	get isNumericStr() {
+		return (
+			v8n()
+				.string()
+				.pattern(/\d+/)
+		);
+	}
 };
 
 /**
