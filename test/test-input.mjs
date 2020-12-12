@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-undef
 const assert = chai.assert; // ←chaiはindex.htmlでグローバルに読み込む
 
 import { InputMap, checkMap } from "./../src/module/input.mjs";

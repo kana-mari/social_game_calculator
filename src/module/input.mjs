@@ -1,6 +1,11 @@
 // モジュールインポート
-import { isPosiInt, isPosiIntAnd0, isBlank } from "./validate.mjs";
+import Validate from "./validate.mjs";
 import Parse from "./parse.mjs";
+
+/**
+ * Validateをインスタンス化
+ */
+const validate = new Validate();
 
 /**
  * Parseをインスタンス化
@@ -28,7 +33,7 @@ const InputMap = class makeParsedValueMap {
 		// 値をset
 		for (const i of keys) {
 			// input要素が入力されていれば、mapにvalueをset
-			if (!isBlank.test(document.getElementById(`js-input_${i}`).value)) {
+			if (validate.isNotBlank.test(document.getElementById(`js-input_${i}`).value)) {
 				map.set(i, parse.parseInput(document.getElementById(`js-input_${i}`).value));
 			}
 		}
@@ -52,17 +57,17 @@ const checkMap = function checkInputMap(map) {
 	switch (map.size) {
 		case 3:
 			// Mapの各要素をチェック span, goal, totalがOKならtrue
-			result = isPosiInt.test(map.get('span'))
-				&& isPosiInt.test(map.get('goal'))
-				&& isPosiIntAnd0.test(map.get('total'));
+			result = validate.isPosiInt.test(map.get('span'))
+				&& validate.isPosiInt.test(map.get('goal'))
+				&& validate.isPosiIntAnd0.test(map.get('total'));
 			break;
 
 		case 4:
 			// Mapの各要素をチェック span, goal, total, approxがOKならtrue
-			result = isPosiInt.test(map.get('span'))
-				&& isPosiInt.test(map.get('goal'))
-				&& isPosiIntAnd0.test(map.get('total'))
-				&& isPosiInt.test(map.get('approx'));
+			result = validate.isPosiInt.test(map.get('span'))
+				&& validate.isPosiInt.test(map.get('goal'))
+				&& validate.isPosiIntAnd0.test(map.get('total'))
+				&& validate.isPosiInt.test(map.get('approx'));
 			break;
 
 		default:
@@ -85,7 +90,11 @@ const Input = class InputModule {
 	}
 };
 
-// テスト用のエクスポート
+/**
+ * テスト用のエクスポート
+ * @exports
+ * @deprecated
+ */
 export { InputMap, checkMap };
 
 // 本番用エクスポート
