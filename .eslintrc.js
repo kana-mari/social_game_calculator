@@ -11,7 +11,8 @@ module.exports = {
         "sourceType": "module"
     },
     "globals": {
-        "google": true // Google Chart用
+        "google": true, // Google Chart用
+        "chai": true // ブラウザテスト時のchai用
     },
     "rules": {
     }
