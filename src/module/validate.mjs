@@ -12,7 +12,6 @@ const Validate = class v8nValidate {
 	constructor() { }
 	/**
 	 * 入力内容が空欄かどうか確認するメソッド
-	 * @todo .lengthを.emptyに置き換える
 	 */
 	get isBlank() {
 		return (
@@ -32,28 +31,27 @@ const Validate = class v8nValidate {
 		);
 	}
 	/**
-	 * v8n共通ルール 数値(Infinity・NaN不可) && 整数
-	* @todo .positive追加
+	 * 共通ルール 数値(Infinity・NaN不可) && 整数 && 正の数
 	 */
-	get v8nCommonRule() {
+	get commonRule() {
 		return (
 			v8n()
 				.numeric()
 				.integer()
+				.positive()
 		);
 	}
 	/**
 	 * 共通ルール+1以上
 	 */
 	get isPosiInt() {
-		return this.v8nCommonRule.greaterThanOrEqual(1);
+		return this.commonRule.greaterThanOrEqual(1);
 	}
 	/**
  * 共通ルール+0以上
- * greaterThanOrEqual(0)を削除
  */
 	get isPosiIntAnd0() {
-		return this.v8nCommonRule.greaterThanOrEqual(0);
+		return this.commonRule;
 	}
 };
 
