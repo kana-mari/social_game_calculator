@@ -1,5 +1,6 @@
 /**
  * 計算する関数
+ * @type {function}
  * @param map {Map<string, number>}
  * @returns {Map<string, number>}
  */
@@ -26,11 +27,6 @@ const calc = function calcNumber(map) {
 		 * @type {number}
 		 */
 		const dailyBattle = Math.ceil(remainBattle / map.get('span'));
-		/**
-		 * 獲得済÷目標 小数点第二位で四捨五入
-		 * @type {number}
-		 */
-		const percentage = Math.round(map.get('total') / map.get('goal') * 100) / 100;
 
 		/**
 		 * 関数の返り値
@@ -40,14 +36,23 @@ const calc = function calcNumber(map) {
 			['remain', remain],
 			['dailyGoal', dailyGoal],
 			['remainBattle', remainBattle],
-			['dailyBattle', dailyBattle],
-			['percentage', percentage]
+			['dailyBattle', dailyBattle]
 		]);
 
 		return result;
 	} else {
-		// ダメな場合、例外を投げる
-		throw new Error('引数が正しくない');
+		// 条件に当てはまらない場合例外を投げる
+		// Mapでないかどうか
+		if (!(map instanceof Map)) {
+			throw new TypeError('引数がMapでない')
+			// Map.sizeが3か4でないかどうか
+		} else if (map.size === 3 || map.size === 4) {
+			throw new RangeError('Map.sizeが3か4でない');
+		}
+		// 上記に当てはまらない場合
+		else {
+			throw new Error('何かがダメ');
+		}
 	}
 };
 
