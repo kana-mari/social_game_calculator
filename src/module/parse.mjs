@@ -1,22 +1,23 @@
 /**
- * @fileoverview パースするモジュール
+ * @file パースするモジュール
  */
 
-import v8n from "https://unpkg.com/v8n/dist/v8n.esm.js";
+import Validate from "./validate.mjs";
+const validate = new Validate();
 
 /**
- * パースするオブジェクト
+ * パースするクラス
  * @param arg {string} - inputのvalue
  * @returns {number} - 引数をパースした数値
  */
 const Parse = class Parse {
 	/**
 	 * 10進数にパースするメソッド
-	 * @param arg {string} - 数字からなる文字列
+	 * @param arg {string} - 数字列
 	 * @returns {number} - 10進数にパースしたnumber
 	 */
 	parseInput(arg) {
-		if (v8n().string().pattern(/\d+/).test(arg)) {
+		if (validate.isNumericStr.test(arg)) {
 			return parseInt(arg, 10);
 		} else {
 			throw new Error('引数が数値で構成された文字列でない');
@@ -26,10 +27,10 @@ const Parse = class Parse {
 	/**
 	 * 空欄の場合nullを返すメソッド
 	 * @param arg {string} - inputのvalue
-	 * @returns {null | number} - null ornumber
+	 * @returns {null | number} - null or number
 	 */
 	allowBlank(arg) {
-		if (v8n().string().length(0, 0).test(arg)) {
+		if (validate.isBlank.test(arg)) {
 			// 空欄ならnullを返す
 			return null;
 		} else {
