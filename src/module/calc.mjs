@@ -1,3 +1,47 @@
+// Validateモジュールインポート&インスタンス化
+import Validate from "./validate.mjs";
+const validate = new Validate();
+
+/**
+ * @type {function}
+ * @param map {map} - Map
+ * @returns {boolean}
+ */
+const checkKeys = function checkMapKeys(map) {
+	const arr = Array.from(map.keys());
+	// lengthによって分岐
+	if (arr.length === 3) {
+		return arr === ['span', 'goal', 'total'];
+	} else {
+		return arr === ['span', 'goal', 'total', 'approx'];
+	}
+};
+
+/**
+ * @type {function}
+ * @param map {map} - Map
+ * @returns {boolean}
+ * @throws ValidationError
+ */
+const checkValues = function checkMapValues(map) {
+	/**
+	 * map.valuesの配列
+	 * @type {Array<number>}
+	 */
+	const arr = Array.from(map.values());
+	/**
+	 * 配列の要素が正の整数(0含む)かチェックする Array.prototype.everyのコールバック関数
+	 * @type {function}
+	 * @param element - 配列の要素
+	 * @returns {boolean}
+	 */
+	const validateArr = function validateArray(element) {
+		return validate.isPosiIntAnd0.test(element);
+	};
+
+	return arr.every(validateArr);
+};
+
 /**
  * 計算する関数
  * @type {function}
@@ -6,6 +50,7 @@
  */
 const calc = function calcNumber(map) {
 	// map型かつsizeが3か4
+	// todo: keysとvaluesチェックする
 	if (map instanceof Map && (map.size === 3 || map.size === 4)) {
 		/**
 		 * 目標までの残りpt.
@@ -29,7 +74,7 @@ const calc = function calcNumber(map) {
 		const dailyBattle = Math.ceil(remainBattle / map.get('span'));
 
 		/**
-		 * 関数の返り値
+		 * calc関数の返り値
 		 * @type {Map<string, number>}
 		 */
 		const result = new Map([
@@ -38,15 +83,14 @@ const calc = function calcNumber(map) {
 			['remainBattle', remainBattle],
 			['dailyBattle', dailyBattle]
 		]);
-
 		return result;
-	} else {
-		// 条件に当てはまらない場合例外を投げる
+
+	} else { // 例外
 		// Mapでないかどうか
 		if (!(map instanceof Map)) {
-			throw new TypeError('引数がMapでない')
+			throw new TypeError('引数がMapでない');
 			// Map.sizeが3か4でないかどうか
-		} else if (map.size === 3 || map.size === 4) {
+		} else if (map.size !== 3 || map.size !== 4) {
 			throw new RangeError('Map.sizeが3か4でない');
 		}
 		// 上記に当てはまらない場合
@@ -56,4 +100,8 @@ const calc = function calcNumber(map) {
 	}
 };
 
+// テスト用エクスポート
+export { checkKeys, checkValues };
+
+// 本番用エクスポート
 export default calc;
