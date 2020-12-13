@@ -1,4 +1,4 @@
-// Validateモジュールインポート&インスタンス化
+// Validateモジュールをインポート&インスタンス化
 import Validate from "./validate.mjs";
 const validate = new Validate();
 
@@ -50,7 +50,7 @@ const checkValues = function checkMapValues(map) {
  * @returns {Map<string, number>}
  */
 const calc = function calcNumber(map) {
-	// map型かつsizeが3か4
+	// map型かつsizeが3か4、keysとvaluesも正しい
 	if (map instanceof Map
 		&& (map.size === 3 || map.size === 4)
 		&& checkKeys(map)
