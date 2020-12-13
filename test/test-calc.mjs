@@ -1,10 +1,63 @@
 const assert = chai.assert; // ←chaiはindex.htmlでグローバルに読み込む
 
 import calc from "./../src/module/calc.mjs";
+import { checkKeys, checkValues } from "./../src/module/calc.mjs";
+
+// テスト用変数
+const testMap3 = new Map([['span', 7], ['goal', 1000], ['total', 100]]);
+const testMap4 = new Map(testMap3);
+testMap4.set('approx', 100);
+const calc3 = calc(testMap3);
+const calc4 = calc(testMap4);
 
 /**
-* Red
-* # テストすべき項目
+ * - Mapを渡すと真偽値を返す
+ * - Map以外を渡すと例外を返す
+ * - 正しくないMapにはFalseを返す
+ * - 正しいMapにはTrueを返す
+ */
+describe('関数checkKeys', () => {
+	it('Mapを渡す→真偽値を返す', () => {
+		assert.isBoolean(checkKeys(new Map()));
+	});
+	it('Map以外を渡す→例外を返す', () => {
+		assert.throws(() => { checkKeys('hogehoge') }, Error);
+	});
+	it('正しくないMapを渡す→Falseを返す', () => {
+		assert.isFalse(checkKeys(new Map([
+			['piyopiyo1', 1234],
+			['piyopiyo2', 1234],
+			['piyopiyo3', 1234],
+			['piyopiyo4', 1234]])));
+	});
+	it('正しいMapを渡す→Trueを返す', () => {
+		assert.isTrue(checkKeys(testMap3));
+		assert.isTrue(checkKeys(testMap4));
+	});
+});
+
+describe('関数checkValues', () => {
+	it('Mapを渡す→真偽値を返す', () => {
+		assert.isBoolean(checkValues(new Map()));
+	});
+	it('Map以外を渡す→例外を返す', () => {
+		assert.throws(() => { checkValues('hogehoge') }, Error);
+	});
+	it('正しくないMapを渡す→Falseを返す', () => {
+		assert.isFalse(checkValues(new Map([
+			['1', NaN],
+			['2', Infinity],
+			['3', '1234'],
+			['4', true]])));
+	});
+	it('正しいMapを渡す→Trueを返す', () => {
+		assert.isTrue(checkValues(testMap3));
+		assert.isTrue(checkValues(testMap4));
+	});
+});
+
+/**
+* # calc関数・テストすべき項目
 * ## 正常系
 * - Mapを渡す→返り値がMap
 * - Mapを渡す→返り値のMap.valuesがnumber型(Infinity、NaN不可)
@@ -20,16 +73,7 @@ import calc from "./../src/module/calc.mjs";
 * - Map.keys!==['span', 'goal', 'total'] || ['span', 'goal', 'total', 'approx']のMapを渡す→例外を返す
 **/
 
-describe('正常系', () => {
-	// テスト用変数
-	const testMap3 = new Map([['span', 7], ['goal', 1000], ['total', 100]]);
-	const testMap4 = new Map(testMap3);
-	testMap4.set('approx', 100);
-	const calc3 = calc(testMap3);
-	const calc4 = calc(testMap4);
-	console.log(calc3);
-	console.log(calc4);
-
+describe('calc関数・正常系', () => {
 	// テスト内容
 	it('Mapを渡す→Mapを返す', () => {
 		assert.instanceOf(calc3, Map);
@@ -56,15 +100,15 @@ describe('正常系', () => {
 			assert.isTrue(Number.isInteger(i));
 		}
 	});
-	it('正しいMap(size=3)を渡す→Map.keys=[remain, dailyGoal]のMapを返す', () => {
-		assert.strictEqual(Array.form(calc3.keys()), ['remain', 'dailyGoal']);
+	it('正しいMap(size=3)を渡す→Map.keys=[remain, dailyGoal]のMapを返す', () => {	
+		assert.sameMembers(Array.from(calc3.keys()), ['remain', 'dailyGoal']);
 	});
 	it('正しいMap(size=4)を渡す→Map.keys=[remain, dailyGoal, remainBattle, dailyBattle]のMapを返す', () => {
-		assert.strictEqual(Array.form(calc4.keys()), ['remain', 'dailyGoal', 'remainBattle', 'dailyBattle']);
+		assert.sameMembers(Array.from(calc4.keys()), ['remain', 'dailyGoal', 'remainBattle', 'dailyBattle']);
 	});
 });
 
-describe('例外系', () => {
+describe('calc関数・例外系', () => {
 	// Map以外を渡す
 	it('真偽値を渡す→例外を返す', () => {
 		assert.throws(() => { calc(true) }, TypeError);
@@ -98,7 +142,7 @@ describe('例外系', () => {
 
 	// Map.valuesが数値でない
 	it('valuesが数値でないMapを渡す→例外を返す', () => {
-		assert.throws(() => { calc(new Map([['span', '1'], ['goal', null], ['total', undefined], ['approx', true]])) }, TypeError);
+		assert.throws(() => { calc(new Map([['span', '1'], ['goal', null], ['total', undefined], ['approx', true]])) }, Error);
 	});
 
 	it('keysが正しくないMapを渡す→例外を返す', () => {

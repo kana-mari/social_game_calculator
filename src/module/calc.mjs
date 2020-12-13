@@ -3,6 +3,7 @@ import Validate from "./validate.mjs";
 const validate = new Validate();
 
 /**
+ * Mapのkeysがspan,goal,total(,approx)かチェックする関数
  * @type {function}
  * @param map {map} - Map
  * @returns {boolean}
@@ -11,17 +12,17 @@ const checkKeys = function checkMapKeys(map) {
 	const arr = Array.from(map.keys());
 	// lengthによって分岐
 	if (arr.length === 3) {
-		return arr === ['span', 'goal', 'total'];
+		return arr.includes('span') || arr.includes('goal') || arr.includes('total');
 	} else {
-		return arr === ['span', 'goal', 'total', 'approx'];
+		return arr.includes('span') || arr.includes('goal') || arr.includes('total') || arr.includes('approx');
 	}
 };
 
 /**
+ * Mapのvaluesが正の整数or0かチェックする関数
  * @type {function}
  * @param map {map} - Map
  * @returns {boolean}
- * @throws ValidationError
  */
 const checkValues = function checkMapValues(map) {
 	/**
@@ -50,8 +51,11 @@ const checkValues = function checkMapValues(map) {
  */
 const calc = function calcNumber(map) {
 	// map型かつsizeが3か4
-	// todo: keysとvaluesチェックする
-	if (map instanceof Map && (map.size === 3 || map.size === 4)) {
+	if (map instanceof Map
+		&& (map.size === 3 || map.size === 4)
+		&& checkKeys(map)
+		&& checkValues(map)) {
+		// 必須項目を計算
 		/**
 		 * 目標までの残りpt.
 		 * @type {number}
@@ -62,16 +66,6 @@ const calc = function calcNumber(map) {
 		 * @type {number}
 		 */
 		const dailyGoal = Math.ceil(remain / map.get('span'));
-		/**
-		 * 目標pt.までに必要な周回回数
-		 * @type {number}
-		 */
-		const remainBattle = Math.ceil(dailyGoal / map.get('approx'));
-		/**
-		 * 目標pt.までに必要な1日当たりの周回回数
-		 * @type {number}
-		 */
-		const dailyBattle = Math.ceil(remainBattle / map.get('span'));
 
 		/**
 		 * calc関数の返り値
@@ -80,9 +74,24 @@ const calc = function calcNumber(map) {
 		const result = new Map([
 			['remain', remain],
 			['dailyGoal', dailyGoal],
-			['remainBattle', remainBattle],
-			['dailyBattle', dailyBattle]
 		]);
+
+		// map.size === 4の場合、remainBattleとdailyBattleを計算
+		if (map.size === 4) {
+			/**
+			* 目標pt.までに必要な周回回数
+			* @type {number}
+			*/
+			const remainBattle = Math.ceil(dailyGoal / map.get('approx'));
+			/**
+			 * 目標pt.までに必要な1日当たりの周回回数
+			 * @type {number}
+			 */
+			const dailyBattle = Math.ceil(remainBattle / map.get('span'));
+
+			result.set('remainBattle', remainBattle);
+			result.set('dailyBattle', dailyBattle);
+		}
 		return result;
 
 	} else { // 例外
