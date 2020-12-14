@@ -1,5 +1,6 @@
 /**
  * @file Google Chart APIでメーターを描画する
+ * @todo 動的にグラフを生成する
  */
 
 /**
