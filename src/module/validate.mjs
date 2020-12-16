@@ -64,6 +64,21 @@ const Validate = class v8nValidate {
 				.pattern(/\d+/)
 		);
 	}
+
+	// Mapのチェック用
+	/**
+	 * Mapのkeyの有無をチェックするメソッド
+	 * @param map {Map} - keyをチェックしたいMap
+	 * @param array {array<any>} - 有無をチェックしたいkeyの配列
+	 * @returns {boolean}
+	 */
+	hasMapKeys(map, array) {
+		if (map instanceof Map && Array.isArray(array)) {
+			return array.every(element => map.has(element));
+		} else {
+			throw new TypeError('引数がMapとArrayでない');
+		}
+	}
 };
 
 /**
