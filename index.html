@@ -37,6 +37,19 @@
 	<meta property="og:description" content="ソシャゲのイベント目標pt.までどのくらい頑張ればいいかを計算します。">
 	<meta property="og:locale" content="ja">
 	<meta name="twitter:card" content="summary">
+
+	<!-- 開発中のCSS置き場 -->
+	<style>
+		.inputGroup__must {
+			color: #ff3d00;
+		}
+		.list__item{
+			margin: 0.5rem 0;
+		}
+		.list__item::marker {
+			color: var(--accent-color);
+		}
+	</style>
 </head>
 
 <body>
@@ -50,38 +63,38 @@
 			</picture>
 			<span class="header__body">ソシャゲ周回回数計算</span>
 		</h1>
-		<p>イベント目標pt.までどのくらい頑張ればいいかを計算します。</p>
+		<p>ソシャゲなどのイベント目標pt.までどのくらい頑張ればいいかを計算します。</p>
 		<form id="js-form" class="form">
 			<div class="inputGroup">
-				<label for="js-input_span" class="inputGroup__label">残りイベント日数</label>
+				<label for="js-input_span" class="inputGroup__label">残りイベント日数
+					<span class="inputGroup__must">*</span></label>
 				<input type="number" class="inputGroup__input" id="js-input_span" min="1" step="1" placeholder="例：14" required>
 				<label for="js-input_span" class="inputGroup__append">日</label>
 			</div>
 			<div class="inputGroup">
-				<label for="js-input_goal" class="inputGroup__label">目標pt.</label>
+				<label for="js-input_goal" class="inputGroup__label">目標pt.<span class="inputGroup__must">*</span></label>
 				<input type="number" class="inputGroup__input" id="js-input_goal" min="1" step="1" placeholder="例：100000"
 					required>
 				<label for="js-input_goal" class="inputGroup__append">pt.</label>
 			</div>
 			<div class="inputGroup">
-				<label for="js-input_total" class="inputGroup__label">獲得済みpt.</label>
+				<label for="js-input_total" class="inputGroup__label">獲得済みpt.<span class="inputGroup__must">*</span></label>
 				<input type="number" class="inputGroup__input" id="js-input_total" min="0" step="1" placeholder="例：5000"
 					required>
 				<label for="js-input_total" class="inputGroup__append">pt.</label>
 			</div>
 			<div class="inputGroup">
-				<label for="js-input_approx" class="inputGroup__label">1周回での平均獲得pt.<small
-						class="inputGroup__label--muted">（任意入力）</small></label>
+				<label for="js-input_approx" class="inputGroup__label">1周回での平均獲得pt.</label>
 				<input type="number" class="inputGroup__input" id="js-input_approx" min="1" step="1" placeholder="例：400">
 				<label for="js-input_approx" class="inputGroup__append">pt.</label>
 			</div>
-			<button type="button" id="js-button" class="button">
+			<button type="submit" id="js-button" class="button">
 				<img class="button__prepend" src="./img/calc-icon.svg" width="24" height="24" alt="">
 				<span class="button__body">計算する</span>
 			</button>
 		</form>
 
-		<table class="table--invisible" id="js-table">
+		<table class="table" id="js-table">
 			<tbody>
 				<tr class="table__row">
 					<th class="table__headerCell" scope="row">目標までの残りpt.</th>
@@ -101,16 +114,30 @@
 				</tr>
 			</tbody>
 		</table>
+
+		<section>
+			<h1>解説</h1>
+			<p>ソシャゲなどのイベント目標pt.までどのくらい頑張ればいいかを計算します。</p>
+			<p>入力したデータはサーバーに送信されません。</p>
+			<h2>計算方法</h2>
+			<ul class="list">
+				<li class="list__item">残りpt. = 目標pt. - 獲得済みpt.</li>
+				<li class="list__item">1日当たりの目標pt. = 残りpt. ÷ 残りイベント日数</li>
+				<li class="list__item">目標pt.までに必要な周回回数 = 1日当たりの目標pt. ÷ 1周回当たりの獲得pt.</li>
+				<li class="list__item">目標pt.までに必要な1日当たりの周回回数 = 目標pt.までに必要な周回回数 ÷ 残りイベント日数</li>
+			</ul>
+		</section>
+
 	</main>
 
 	<footer class="footer">
-		<address>
+		<address>制作者
 			<a href="https://github.com/kana-mari" rel="noopener" target="_blank">kana-mari (github)</a>
 		</address>
 	</footer>
+
 	<!-- スクリプト -->
-	<script src="./src/v8n.min.js"></script>
-	<script src="./src/index.js"></script>
+	<script src="./src/main.mjs" type="module"></script>
 </body>
 
 </html>
