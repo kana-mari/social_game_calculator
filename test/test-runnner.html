@@ -60,7 +60,10 @@
 		</script>
 
 		<!-- テスト対象コード読込 -->
-		<script type="module" src="./test-validate.mjs"></script>
+		<script src="test-calc.mjs" type="module"></script>
+		<script src="test-input.mjs" type="module"></script>
+		<script src="test-parse.mjs" type="module"></script>
+		<script src="./test-validate.mjs" type="module"></script>
 		<!-- テスト実行 -->
 		<script type="module" class="mocha-exec">
 			mocha.run();
