@@ -67,17 +67,41 @@ const Validate = class v8nValidate {
 
 	// Mapのチェック用
 	/**
-	 * Mapのkeyの有無をチェックするメソッド
+	 * 指定したkeyがMapにあるかどうかをチェックするメソッド
 	 * @param map {Map} - keyをチェックしたいMap
-	 * @param array {array<any>} - 有無をチェックしたいkeyの配列
+	 * @param keys {array<any>} - 有無をチェックしたいkeyの配列
 	 * @returns {boolean}
 	 */
-	hasMapKeys(map, array) {
-		if (map instanceof Map && Array.isArray(array)) {
-			return array.every(element => map.has(element));
+	hasMapKeys(map, keys) {
+		if (map instanceof Map && Array.isArray(keys)) {
+			return keys.every(element => map.has(element));
 		} else {
 			throw new TypeError('引数がMapとArrayでない');
 		}
+	}
+
+	/**
+ * Mapのvaluesが正の整数or0かチェックするメソッド
+ * @param map {map} - Map
+ * @returns {boolean}
+ */
+	isValuesPosiInt(map) {
+		/**
+		 * map.valuesの配列
+		 * @type {Array<number>}
+		 */
+		const arr = Array.from(map.values());
+		/**
+		 * 配列の要素が正の整数(0含む)かチェックする Array.prototype.everyのコールバック関数
+		 * @type {function}
+		 * @param element - 配列の要素
+		 * @returns {boolean}
+		 */
+		const validateArr = (element) => {
+			return this.isPosiIntAnd0.test(element);
+		};
+
+		return arr.every(validateArr);
 	}
 };
 

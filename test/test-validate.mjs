@@ -195,3 +195,48 @@ describe('isNumericStrプロパティのテスト', () => {
 		assert.isFalse(validate.isNumericStr.test(undefined));
 	});
 });
+
+// テスト用変数
+const testMap3 = new Map([['span', 7], ['goal', 1000], ['total', 100]]);
+const testMap4 = new Map(testMap3);
+testMap4.set('approx', 100);
+
+describe('hasMapKeysメソッドのテスト', () => {
+	it('Mapと配列を渡す→真偽値を返す', () => {
+		assert.isBoolean(validate.hasMapKeys(new Map(), []));
+	});
+	it('Mapと配列以外を渡す→例外を返す', () => {
+		assert.throws(() => { validate.hasMapKeys('hogehoge', { 'hogehoge': 0 }) }, TypeError);
+	});
+	it('マッチしないMapと配列を渡す→Falseを返す', () => {
+		assert.isFalse(validate.hasMapKeys(new Map([
+			['piyopiyo1', 1234],
+			['piyopiyo2', 1234],
+			['piyopiyo3', 1234],
+			['piyopiyo4', 1234]]), ['hogehoge1', 'hogehoge2', 'hogehoge3']));
+	});
+	it('正しいMapを渡す→Trueを返す', () => {
+		assert.isTrue(validate.hasMapKeys(testMap3, ['span', 'goal', 'total']));
+		assert.isTrue(validate.hasMapKeys(testMap4, ['span', 'goal', 'total', 'approx']));
+	});
+});
+
+describe('isValuesPosiIntメソッドのテスト', () => {
+	it('Mapを渡す→真偽値を返す', () => {
+		assert.isBoolean(validate.isValuesPosiInt(new Map()));
+	});
+	it('Map以外を渡す→例外を返す', () => {
+		assert.throws(() => { validate.isValuesPosiInt('hogehoge') }, Error);
+	});
+	it('正しくないMapを渡す→Falseを返す', () => {
+		assert.isFalse(validate.isValuesPosiInt(new Map([
+			['1', NaN],
+			['2', Infinity],
+			['3', '1234'],
+			['4', true]])));
+	});
+	it('正しいMapを渡す→Trueを返す', () => {
+		assert.isTrue(validate.isValuesPosiInt(testMap3));
+		assert.isTrue(validate.isValuesPosiInt(testMap4));
+	});
+});

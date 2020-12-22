@@ -7,6 +7,7 @@ const validate = new Validate();
  * @type {function}
  * @param map {map} - Map
  * @returns {boolean}
+ * @deprecated map.hasのほうがよさげ
  */
 const checkKeys = function checkMapKeys(map) {
 	const arr = Array.from(map.keys());
@@ -19,31 +20,6 @@ const checkKeys = function checkMapKeys(map) {
 };
 
 /**
- * Mapのvaluesが正の整数or0かチェックする関数
- * @type {function}
- * @param map {map} - Map
- * @returns {boolean}
- */
-const checkValues = function checkMapValues(map) {
-	/**
-	 * map.valuesの配列
-	 * @type {Array<number>}
-	 */
-	const arr = Array.from(map.values());
-	/**
-	 * 配列の要素が正の整数(0含む)かチェックする Array.prototype.everyのコールバック関数
-	 * @type {function}
-	 * @param element - 配列の要素
-	 * @returns {boolean}
-	 */
-	const validateArr = function validateArray(element) {
-		return validate.isPosiIntAnd0.test(element);
-	};
-
-	return arr.every(validateArr);
-};
-
-/**
  * 計算する関数
  * @type {function}
  * @param map {Map<string, number>}
@@ -53,8 +29,8 @@ const calc = function calcNumber(map) {
 	// map型かつsizeが3か4、keysとvaluesも正しい
 	if (map instanceof Map
 		&& (map.size === 3 || map.size === 4)
-		&& checkKeys(map)
-		&& checkValues(map)) {
+		&& validate.checkKeys(map) // todo: 引数直す
+		&& validate.checkValues(map)) {
 		// 必須項目を計算
 		/**
 		 * 目標までの残りpt.
@@ -110,7 +86,7 @@ const calc = function calcNumber(map) {
 };
 
 // テスト用エクスポート
-export { checkKeys, checkValues };
+export { checkKeys };
 
 // 本番用エクスポート
 export default calc;
