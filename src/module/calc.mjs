@@ -26,11 +26,11 @@ const checkKeys = function checkMapKeys(map) {
  * @returns {Map<string, number>}
  */
 const calc = function calcNumber(map) {
-	// map型かつsizeが3か4、keysとvaluesも正しい
+	// map型かつsizeが3か4、必須のkeyがあり、valuesが正の整数
 	if (map instanceof Map
 		&& (map.size === 3 || map.size === 4)
-		&& validate.checkKeys(map) // todo: 引数直す
-		&& validate.checkValues(map)) {
+		&& validate.hasMapKeys(map, ['span', 'goal', 'total'])
+		&& validate.isValuesPosiInt(map)) {
 		// 必須項目を計算
 		/**
 		 * 目標までの残りpt.
