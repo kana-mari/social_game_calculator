@@ -23,6 +23,14 @@ const Output = class OutputHtml {
 				}
 			}
 
+			// tableアニメーション
+			/**
+			 * table要素 #js-table
+			 * @type {HTMLElement}
+			 */
+			const table = document.getElementById('js-table');
+			table.classList.remove('table--invisible', 'animate__animated', 'animate__fadeIn');
+			table.classList.add('table', 'animate__animated', 'animate__fadeIn');
 		} else {
 			// ダメなら例外を投げる
 			throw new Error('引数はMap、かつsizeが2か4でなければならない');
