@@ -60,15 +60,9 @@
 		}
 
 		.error h1 {
-			font-size: 1.25rem;
+			font-size: 1.1rem;
 			font-weight: bold;
 			color: var(--error-color);
-			display: flex;
-			align-items: center;
-		}
-
-		.error__titlePrepend {
-			margin-right: 0.25rem;
 		}
 
 		.error p:last-child {
@@ -131,9 +125,8 @@
 
 				<!-- エラー表示エリア -->
 				<div class="error" id="js-error">
-					<script src="https://kit.fontawesome.com/fe0d51c8bc.js" crossorigin="anonymous"></script>
-					<h1 class="error__title"><i class="error__titlePrepend fas fa-exclamation-circle fa-lg"></i>エラーが発生しました。</h1>
-					<p>入力内容を確認してください。</p>
+					<h1 class="error__title">！エラーが発生しました。</h1>
+					<p>入力内容を確認してください。<br>半角数字のみ入力できます。</p>
 				</div>
 
 				<!-- ボタン -->
