@@ -40,12 +40,44 @@
 
 	<!-- 開発中のCSS置き場 -->
 	<style>
-		.inputGroup__must {
-			color: #ff3d00;
+		:root {
+			--error-color: #ff3d00;
 		}
-		.list__item{
+
+		.inputGroup__required {
+			color: var(--error-color);
+		}
+
+		/* エラー表示ブロック */
+		.error {
+			margin: 1rem 0;
+			padding: 1rem;
+			border: 1px solid #ffab91;
+		}
+
+		.error h1 {
+			font-size: 1.25rem;
+			font-weight: bold;
+			color: var(--error-color);
+			display: flex;
+			align-items: center;
+		}
+
+		.error__prepend {
+			margin-right: 0.25rem;
+		}
+
+		.error p:last-child {
+			margin-bottom: 0;
+		}
+
+		/* 解説ブロック */
+
+		/* リストブロック */
+		.list__item {
 			margin: 0.5rem 0;
 		}
+
 		.list__item::marker {
 			color: var(--accent-color);
 		}
@@ -63,58 +95,76 @@
 			</picture>
 			<span class="header__body">ソシャゲ周回回数計算</span>
 		</h1>
-		<p>ソシャゲなどのイベント目標pt.までどのくらい頑張ればいいかを計算します。</p>
-		<form id="js-form" class="form">
-			<div class="inputGroup">
-				<label for="js-input_span" class="inputGroup__label">残りイベント日数
-					<span class="inputGroup__must">*</span></label>
-				<input type="number" class="inputGroup__input" id="js-input_span" min="1" step="1" placeholder="例：14" required>
-				<label for="js-input_span" class="inputGroup__append">日</label>
-			</div>
-			<div class="inputGroup">
-				<label for="js-input_goal" class="inputGroup__label">目標pt.<span class="inputGroup__must">*</span></label>
-				<input type="number" class="inputGroup__input" id="js-input_goal" min="1" step="1" placeholder="例：100000"
-					required>
-				<label for="js-input_goal" class="inputGroup__append">pt.</label>
-			</div>
-			<div class="inputGroup">
-				<label for="js-input_total" class="inputGroup__label">獲得済みpt.<span class="inputGroup__must">*</span></label>
-				<input type="number" class="inputGroup__input" id="js-input_total" min="0" step="1" placeholder="例：5000"
-					required>
-				<label for="js-input_total" class="inputGroup__append">pt.</label>
-			</div>
-			<div class="inputGroup">
-				<label for="js-input_approx" class="inputGroup__label">1周回での平均獲得pt.</label>
-				<input type="number" class="inputGroup__input" id="js-input_approx" min="1" step="1" placeholder="例：400">
-				<label for="js-input_approx" class="inputGroup__append">pt.</label>
-			</div>
-			<button type="submit" id="js-button" class="button">
-				<img class="button__prepend" src="./img/calc-icon.svg" width="24" height="24" alt="">
-				<span class="button__body">計算する</span>
-			</button>
-		</form>
+		<p>ソシャゲなどのイベント目標pt.までどのくらい頑張ればいいかを計算します。<br>
+			半角数字で入力してください。</p>
+		<section>
+			<form id="js-form" class="form">
+				<div class="inputGroup">
+					<label for="js-input_span" class="inputGroup__label">残りイベント日数
+						<span class="inputGroup__required">*</span></label>
+					<input type="number" class="inputGroup__input" id="js-input_span" min="1" step="1" placeholder="例：14"
+						required>
+					<label for="js-input_span" class="inputGroup__append">日</label>
+				</div>
+				<div class="inputGroup">
+					<label for="js-input_goal" class="inputGroup__label">目標pt.<span class="inputGroup__required">*</span></label>
+					<input type="number" class="inputGroup__input" id="js-input_goal" min="1" step="1" placeholder="例：100000"
+						required>
+					<label for="js-input_goal" class="inputGroup__append">pt.</label>
+				</div>
+				<div class="inputGroup">
+					<label for="js-input_total" class="inputGroup__label">獲得済みpt.<span
+							class="inputGroup__required">*</span></label>
+					<input type="number" class="inputGroup__input" id="js-input_total" min="0" step="1" placeholder="例：5000"
+						required>
+					<label for="js-input_total" class="inputGroup__append">pt.</label>
+				</div>
+				<div class="inputGroup">
+					<label for="js-input_approx" class="inputGroup__label">1周回での平均獲得pt.</label>
+					<input type="number" class="inputGroup__input" id="js-input_approx" min="1" step="1" placeholder="例：400">
+					<label for="js-input_approx" class="inputGroup__append">pt.</label>
+				</div>
 
-		<table class="table" id="js-table">
-			<tbody>
-				<tr class="table__row">
-					<th class="table__headerCell" scope="row">目標までの残りpt.</th>
-					<td class="table__cell"><output class="output" id="js-output_remain"></output>pt.</td>
-				</tr>
-				<tr class="table__row">
-					<th class="table__headerCell" scope="row">1日当たりの目標pt.</th>
-					<td class="table__cell"><output class="output" id="js-output_dailyGoal"></output>pt.</td>
-				</tr>
-				<tr class="table__row">
-					<th class="table__headerCell">目標pt.までに必要な周回回数</th>
-					<td class="table__cell"><output class="output" id="js-output_remainBattle"></output>回</td>
-				</tr>
-				<tr class="table__row">
-					<th class="table__headerCell" scope="row">目標pt.までに必要な1日当たりの周回回数</th>
-					<td class="table__cell"><output class="output" id="js-output_dailyBattle"></output>回</td>
-				</tr>
-			</tbody>
-		</table>
+				<!-- エラー表示エリア -->
+				<div class="error">
+					<script src="https://kit.fontawesome.com/fe0d51c8bc.js" crossorigin="anonymous"></script>
+					<h1><i class="error__prepend fas fa-exclamation-circle fa-lg"></i>エラーが発生しました。</h1>
+					<p>入力内容を確認してね。</p>
+				</div>
 
+				<!-- ボタン -->
+				<button type="submit" id="js-button" class="button">
+					<img class="button__prepend" src="./img/calc-icon.svg" width="24" height="24" alt="">
+					<span class="button__body">計算する</span>
+				</button>
+			</form>
+		</section>
+
+		<!-- 計算結果表示ブロック -->
+		<section>
+			<table class="table--invisible" id="js-table">
+				<tbody>
+					<tr class="table__row">
+						<th class="table__headerCell" scope="row">目標までの残りpt.</th>
+						<td class="table__cell"><output class="output" id="js-output_remain"></output>pt.</td>
+					</tr>
+					<tr class="table__row">
+						<th class="table__headerCell" scope="row">1日当たりの目標pt.</th>
+						<td class="table__cell"><output class="output" id="js-output_dailyGoal"></output>pt.</td>
+					</tr>
+					<tr class="table__row">
+						<th class="table__headerCell">目標pt.までに必要な周回回数</th>
+						<td class="table__cell"><output class="output" id="js-output_remainBattle"></output>回</td>
+					</tr>
+					<tr class="table__row">
+						<th class="table__headerCell" scope="row">目標pt.までに必要な1日当たりの周回回数</th>
+						<td class="table__cell"><output class="output" id="js-output_dailyBattle"></output>回</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<!-- 解説ブロック -->
 		<section>
 			<h1>解説</h1>
 			<p>ソシャゲなどのイベント目標pt.までどのくらい頑張ればいいかを計算します。</p>
@@ -127,7 +177,6 @@
 				<li class="list__item">目標pt.までに必要な1日当たりの周回回数 = 目標pt.までに必要な周回回数 ÷ 残りイベント日数</li>
 			</ul>
 		</section>
-
 	</main>
 
 	<footer class="footer">
@@ -137,7 +186,7 @@
 	</footer>
 
 	<!-- スクリプト -->
-	<script src="./src/main.mjs" type="module"></script>
+	<script src="./src/module/main.mjs" type="module"></script>
 </body>
 
 </html>
