@@ -43,6 +43,7 @@
 		</form>
 		<h1>テスト用DOM</h1>
 		<output id="js-output_remain"></output>
+		<output id="js-output_table"></output>
 	</article>
 	<article>
 		<h1>テスト実行</h1>
@@ -60,12 +61,13 @@
 		</script>
 
 		<!-- テスト対象コード読込 -->
-		<script src="test-calc.mjs" type="module"></script>
-		<script src="test-input.mjs" type="module"></script>
-		<script src="test-parse.mjs" type="module"></script>
-		<script src="./test-validate.mjs" type="module"></script>
+		<script src="./test-calc.mjs" type="module" defer></script>
+		<script src="./test-input.mjs" type="module" defer></script>
+		<script src="./test-parse.mjs" type="module" defer></script>
+		<script src="./test-validate.mjs" type="module" defer></script>
+		<script src="./test-domParse.mjs" type="module" defer></script>
 		<!-- テスト実行 -->
-		<script type="module" class="mocha-exec">
+		<script type="module" class="mocha-exec" defer>
 			mocha.run();
 		</script>
 	</article>
