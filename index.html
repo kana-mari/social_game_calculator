@@ -124,9 +124,8 @@
 				</div>
 
 				<!-- エラー表示エリア -->
-				<div class="error" id="js-error">
-					<h1 class="error__title">！エラーが発生しました。</h1>
-					<p>入力内容を確認してください。<br>半角数字のみ入力できます。</p>
+				<div class="error error--invisible" id="js-error">
+					<!-- 内容はJSで動的に生成 -->
 				</div>
 
 				<!-- ボタン -->
@@ -139,7 +138,7 @@
 
 		<!-- 計算結果表示ブロック -->
 		<section>
-			<table class="table" id="js-table">
+			<table class="table table--invisible" id="js-table">
 				<tbody>
 					<tr class="table__row">
 						<th class="table__headerCell" scope="row">目標までの残りpt.</th>
