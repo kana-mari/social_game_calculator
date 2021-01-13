@@ -16,7 +16,7 @@
 		"url": "git+https://github.com/kana-mari/social_game_calculator.git"
 	},
 	"author": "kana-mari",
-	"license": "ISC",
+	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/kana-mari/social_game_calculator/issues"
 	},
