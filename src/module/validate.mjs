@@ -2,7 +2,7 @@
  * @file バリデーション系のモジュール
  */
 
-import v8n from "https://unpkg.com/v8n/dist/v8n.esm.js";
+import v8n from 'v8n';
 
 /**
  * v8nでのバリデート条件をまとめたクラス
