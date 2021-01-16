@@ -3,23 +3,6 @@ import Validate from "./validate.mjs";
 const validate = new Validate();
 
 /**
- * Mapのkeysがspan,goal,total(,approx)かチェックする関数
- * @type {function}
- * @param map {map} - Map
- * @returns {boolean}
- * @deprecated map.hasのほうがよさげ
- */
-const checkKeys = function checkMapKeys(map) {
-	const arr = Array.from(map.keys());
-	// lengthによって分岐
-	if (arr.length === 3) {
-		return arr.includes('span') || arr.includes('goal') || arr.includes('total');
-	} else {
-		return arr.includes('span') || arr.includes('goal') || arr.includes('total') || arr.includes('approx');
-	}
-};
-
-/**
  * 計算する関数
  * @type {function}
  * @param map {Map<string, number>}
@@ -84,9 +67,6 @@ const calc = function calcNumber(map) {
 		}
 	}
 };
-
-// テスト用エクスポート
-export { checkKeys };
 
 // 本番用エクスポート
 export default calc;
