@@ -1,15 +1,13 @@
 /**
  * @file Google Chart APIでメーターを描画する
- * @todo 動的にグラフを生成する
- * @todo index.htmlにグラフ描画DOMを追加
  */
 
 const OutputMeter = class OutputGoogleChartsMeter {
 	/**
-	 * @param input {Map<string,number>} - 入力内容を格納したMap
-	 * @param result {Map<string,number>} - 計算結果を格納したMap
+	 * @param total {number} - 獲得済みpt.
+	 * @param remain {number} - 目標までの残りpt.
 	 */
-	constructor(input, result) {
+	constructor(total, remain) {
 		/**
 		 * グラフを描画するためのコールバック関数
 		 * @type {Function}
@@ -20,25 +18,22 @@ const OutputMeter = class OutputGoogleChartsMeter {
 			 */
 			const data = google.visualization.arrayToDataTable([
 				['進捗', '獲得済', { role: 'style' }, '残り', { role: 'style' }],
-				['', input.get('total'), '#00c853', result.get('remain'), '#EEEEEE']
+				['', total, '#00c853', remain, '#EEEEEE']
 			]);
 
 			/**
 			 * オプション設定
 			 */
 			const options = {
-				// アニメーション
-				animation: {
-					duration: 500,
-					easing: 'out',
-					startup: true
-				},
+				// 軸タイトルの配置
+				axisTitlesPosition: 'none',
 				// グラフエリア
 				chartArea: {
 					backgroundColor: 'white',
 					left: 0,
 					top: 0,
-					width: '100%'
+					width: '100%',
+					height: '100%'
 				},
 				// 横軸
 				hAxis: {
@@ -49,7 +44,7 @@ const OutputMeter = class OutputGoogleChartsMeter {
 					baselineColor: 'white'
 				},
 				// グラフの高さ
-				height: 100,
+				height: 50,
 				// 凡例
 				legend: {
 					position: 'none'
@@ -59,9 +54,9 @@ const OutputMeter = class OutputGoogleChartsMeter {
 			};
 
 			/**
-			 * 描画エリア
+			 * 描画エリアを指定
 			 */
-			const chart = new google.visualization.BarChart(document.getElementById('barChart'));
+			const chart = new google.visualization.BarChart(document.getElementById('js-output_meter'));
 
 			chart.draw(data, options);
 		};

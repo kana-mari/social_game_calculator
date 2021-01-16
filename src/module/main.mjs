@@ -8,6 +8,7 @@ import Input from "./input.mjs";
 import calc from "./calc.mjs";
 import Output from "./outputHtml.mjs";
 import domParse from "./domParse.mjs";
+import OutputMeter from "./outoputMeter.mjs";
 
 /**
  * モジュールを統合したクラス
@@ -47,6 +48,7 @@ class Main {
 				const result = calc(input);
 
 				new Output(result);
+				new OutputMeter(input.get('total'), result.get('remain'));
 			} catch (error) {
 				// コンソールにエラー表示
 				console.error(error);
