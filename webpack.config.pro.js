@@ -1,14 +1,16 @@
-module.exports = {
+// 本番用設定ファイル
+
+// 共通設定
+const { merge } = require('webpack-merge');
+const commonConfig = require('./webpack.config.common.js');
+
+module.exports = merge(commonConfig, {
 	// モードの設定
 	mode: 'production',
-	// エントリーポイント
-	entry: './src/index.js',
 
 	// ファイルの出力設定
 	output: {
-		//  出力ファイルのディレクトリ名
-		path: `${__dirname}/src`,
 		// 出力ファイル名
 		filename: "index.min.js"
 	}
-};
+});
