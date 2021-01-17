@@ -9,7 +9,8 @@
 		"Browser-Sync": "browser-sync start --server --files 'index.html, src/index.js, css/style.min.css'",
 		"Compile:sass2css": "sass css/dev/style.scss --style=compressed css/style.min.css",
 		"Autoprefixer": "postcss css/style.min.css --map --use autoprefixer --output css/style.min.css",
-		"webpack": "webpack"
+		"webpack:development": "webpack --config webpack.config.dev.js",
+		"webpack:production": "webpack --config webpack.config.pro.js"
 	},
 	"repository": {
 		"type": "git",
