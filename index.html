@@ -14,9 +14,9 @@
 
 	<!-- favicon -->
 	<link rel="icon" href="favicon.svg" type="image/svg+xml">
-	<link rel="icon alternate" href="apple-touch-icon.png" sizes="180x180" type="image/png">
-
 	<!-- SVG favicon未対応ブラウザ用 -->
+	<link rel="icon alternate" href="apple-touch-icon.png" sizes="180x180" type="image/png">
+	<!-- その他favicon -->
 	<link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" type="image/png">
 	<link rel="mask-icon" href="pinned-tab-icon.svg" color="#00c853" type="image/svg+xml">
 
@@ -40,45 +40,6 @@
 
 	<!-- 開発中のCSS置き場 -->
 	<style>
-		:root {
-			--error-color: #ff3d00;
-		}
-
-		.inputGroup__required {
-			color: var(--error-color);
-		}
-
-		/* エラー表示ブロック */
-		.error {
-			margin: 1.5rem 0;
-			padding: 1rem;
-			border: 1px solid #ffab91;
-		}
-
-		.error--invisible {
-			display: none;
-		}
-
-		.error h1 {
-			font-size: 1.1rem;
-			font-weight: bold;
-			color: var(--error-color);
-		}
-
-		.error p:last-child {
-			margin-bottom: 0;
-		}
-
-		/* 解説ブロック */
-
-		/* リストブロック */
-		.list__item {
-			margin: 0.5rem 0;
-		}
-
-		.list__item::marker {
-			color: var(--accent-color);
-		}
 	</style>
 </head>
 
@@ -164,10 +125,6 @@
 		<!-- 解説ブロック -->
 		<style>
 			/* 解説ブロックのスタイル */
-			.section {
-				margin: 2rem 0;
-			}
-
 			.heading1 {
 				font-weight: bold;
 				color: var(--accent-color);
@@ -195,8 +152,7 @@
 
 	<!-- スクリプト -->
 	<script src="https://www.gstatic.com/charts/loader.js"></script>
-	<script src="./src/bundle.js"></script>
-	<!-- <script src="./src/index.min.js"></script> -->
+	<script src="./src/index.min.js"></script>
 </body>
 
 </html>

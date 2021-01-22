@@ -2,8 +2,10 @@
 // 
 // リセット
 @use "./bootstrap-reboot";
+
 // 基本設定
 @use "./base";
+
 // コンポーネントをインポート
 @use "./header";
 @use "./form";
