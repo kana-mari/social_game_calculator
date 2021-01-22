@@ -16,6 +16,10 @@
 		}
 	}
 
+	&__required {
+		color: var(--error-color);
+	}
+
 	&__input {
 		// 変数宣言
 		$width: 8rem;
