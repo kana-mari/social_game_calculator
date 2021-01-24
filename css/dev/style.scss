@@ -1,19 +1,24 @@
 @charset "UTF-8";
-// 
+
+// このファイルはエントリーポイント
+
+// モジュールをインポート
 // リセット
-@use "./bootstrap-reboot";
+@use "./common/bootstrap-reboot";
 
 // 基本設定
-@use "./base";
+@use "./common/base";
 
-// コンポーネントをインポート
-@use "./header";
-@use "./form";
-@use "./inputGroup";
-@use "./button";
-@use "./error";
-@use "./table";
-@use "./output";
-@use "./section";
-@use "./list";
-@use "./footer";
+// コンポーネント
+@use "./component/header";
+@use "./component/form";
+@use "./component/inputGroup";
+@use "./component/button";
+@use "./component/error";
+@use "./component/table";
+@use "./component/output";
+@use "./component/section";
+@use "./component/list";
+@use "./component/footer";
+
+// 関数、mixin
