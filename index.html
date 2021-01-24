@@ -107,15 +107,15 @@
 						<td class="table__cell"><output class="output" id="js-output_remain"></output>pt.</td>
 					</tr>
 					<tr class="table__row">
-						<th class="table__headerCell" scope="row">1日当たりの目標pt.</th>
+						<th class="table__headerCell" scope="row">1日あたりの目標pt.</th>
 						<td class="table__cell"><output class="output" id="js-output_dailyGoal"></output>pt.</td>
 					</tr>
 					<tr class="table__row">
-						<th class="table__headerCell">目標pt.までに必要な周回回数</th>
+						<th class="table__headerCell">周回回数</th>
 						<td class="table__cell"><output class="output" id="js-output_remainBattle"></output>回</td>
 					</tr>
 					<tr class="table__row">
-						<th class="table__headerCell" scope="row">目標pt.までに必要な1日当たりの周回回数</th>
+						<th class="table__headerCell" scope="row">1日あたりの周回回数</th>
 						<td class="table__cell"><output class="output" id="js-output_dailyBattle"></output>回</td>
 					</tr>
 				</tbody>
@@ -123,13 +123,6 @@
 		</section>
 
 		<!-- 解説ブロック -->
-		<style>
-			/* 解説ブロックのスタイル */
-			.heading1 {
-				font-weight: bold;
-				color: var(--accent-color);
-			}
-		</style>
 		<section class="section">
 			<h1 class="heading1">解説</h1>
 			<p>ソシャゲなどのイベント目標pt.までどのくらい頑張ればいいかを計算します。</p>
@@ -137,9 +130,9 @@
 			<h2 class="heading2">計算方法</h2>
 			<ul class="list">
 				<li class="list__item">残りpt. = 目標pt. - 獲得済みpt.</li>
-				<li class="list__item">1日当たりの目標pt. = 残りpt. ÷ 残りイベント日数</li>
-				<li class="list__item">目標pt.までに必要な周回回数 = 1日当たりの目標pt. ÷ 1周回当たりの獲得pt.</li>
-				<li class="list__item">目標pt.までに必要な1日当たりの周回回数 = 目標pt.までに必要な周回回数 ÷ 残りイベント日数</li>
+				<li class="list__item">1日あたりの目標pt. = 残りpt. ÷ 残りイベント日数</li>
+				<li class="list__item">周回回数 = 1日あたりの目標pt. ÷ 1周回当たりの獲得pt.</li>
+				<li class="list__item">1日あたりの周回回数 = 周回回数 ÷ 残りイベント日数</li>
 			</ul>
 		</section>
 	</main>
