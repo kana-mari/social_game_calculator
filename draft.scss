@@ -65,11 +65,12 @@ footer {
 	z-index: 2;
 
 	&__a {
+		$size: 45px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 2rem;
-		height: 2rem;
+		width: $size;
+		height: $size;
 		background-color: hsla(145, 100%, 39%, 0.75);
 		color: white;
 		text-decoration: none;
