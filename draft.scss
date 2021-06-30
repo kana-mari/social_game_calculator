@@ -1,5 +1,6 @@
 body {
 	background-color: #ECEFF1;
+	font-family: sans-serif;
 }
 
 // ヘッダー
@@ -19,6 +20,7 @@ header p {
 main {
 	max-width: 750px;
 	margin: auto;
+	padding: 0.5rem;
 }
 
 h1,
@@ -33,11 +35,9 @@ h3 {
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr;
 	gap: 1em;
-	grid-template-areas: "left right";
 }
 
 %cardCommon {
-	border: 1px solid #CFD8DC;
 	padding: 1rem;
 	background-color: white;
 }
@@ -51,23 +51,43 @@ h3 {
 	margin: 1rem 0;
 }
 
+// フッター
+footer {
+	margin-bottom: 1rem;
+}
+
+// FAB
 .floatingActBtn {
 	width: max-content;
 	position: fixed;
-	right: 0.5rem;
-	bottom: 0.5rem;
+	right: 1rem;
+	bottom: 1rem;
 	z-index: 2;
 
 	&__a {
-		display: block;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 2rem;
+		height: 2rem;
 		background-color: hsla(145, 100%, 39%, 0.75);
-		padding: 0.5rem;
 		color: white;
 		text-decoration: none;
 		border-radius: 50%;
 
 		&:hover {
-			background-color: #00E676;
+			background-color: hsla(145, 100%, 39%, 1);
 		}
+	}
+}
+
+// スマホ表示時
+@media screen and (max-width: 576px) {
+	.l-horizontalCardWrapper {
+		display: block;
+	}
+
+	.horizontalCard {
+		margin: 1rem 0;
 	}
 }
