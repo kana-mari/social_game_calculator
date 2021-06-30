@@ -1,0 +1,73 @@
+body {
+	background-color: #ECEFF1;
+}
+
+// ヘッダー
+header h1 {
+	background-color: #00C853;
+	color: white;
+	margin: 0;
+	padding: 1rem;
+}
+
+header p {
+	max-width: 750px;
+	margin: 1rem auto;
+}
+
+// メイン
+main {
+	max-width: 750px;
+	margin: auto;
+}
+
+h1,
+h2,
+h3 {
+	color: #00C853;
+	font-weight: bold;
+}
+
+.l-horizontalCardWrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	gap: 1em;
+	grid-template-areas: "left right";
+}
+
+%cardCommon {
+	border: 1px solid #CFD8DC;
+	padding: 1rem;
+	background-color: white;
+}
+
+.horizontalCard {
+	@extend %cardCommon;
+}
+
+.card {
+	@extend %cardCommon;
+	margin: 1rem 0;
+}
+
+.floatingActBtn {
+	width: max-content;
+	position: fixed;
+	right: 0.5rem;
+	bottom: 0.5rem;
+	z-index: 2;
+
+	&__a {
+		display: block;
+		background-color: hsla(145, 100%, 39%, 0.75);
+		padding: 0.5rem;
+		color: white;
+		text-decoration: none;
+		border-radius: 50%;
+
+		&:hover {
+			background-color: #00E676;
+		}
+	}
+}

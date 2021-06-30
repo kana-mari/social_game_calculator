@@ -1,27 +1,28 @@
 // アウトライン重視
+header.header
+	h1
+		img
+		span タイトル
+	p リード文
 main.main(role="main")
 	article.article
-		header.header
-			h1
-				img
-				span タイトル
-			p リード文
-		section.card 
-			h2 フォーム
-			form.form
-		section.card 
-			h2.card__title 結果
-			figure.graph
-			dl.stackHorizontal
-				dt.stackHorizontal__title
-				dd.stackHorizontal__body
+		div.l-horizontalCardWrapper
+			section.horizontalCard
+				h2 フォーム
+				form.form フォーム
+			section.horizontalCard
+				h2.card__title 結果
+				figure.graph グラフ
+				table 計算結果
 		section.card
 			h2.card__title 解説
 			p 解説本文
 			h3 計算方法
-			ol.list
-				li.list__item
+			ul.list
+				li.list__item hogehoge
+				li.list__item hogehoge
+				li.list__item hogehoge
 footer
 	address 著者情報
 nav.floatingActBtn#js-floatingActBtn
-	a.floatingActBtn__a(href="#") 上に戻る
+	a.floatingActBtn__a(href="#") ↑
