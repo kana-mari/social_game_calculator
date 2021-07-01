@@ -12,6 +12,7 @@
 
 // コンポーネント
 @use "./component/header";
+@use "./component/main";
 @use "./component/form";
 @use "./component/inputGroup";
 @use "./component/button";
@@ -21,5 +22,3 @@
 @use "./component/section";
 @use "./component/list";
 @use "./component/footer";
-
-// 関数、mixin
