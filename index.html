@@ -44,8 +44,8 @@
 </head>
 
 <body>
-	<main class="main">
-		<h1 class="header">
+	<header class="header">
+		<h1 class="header__title">
 			<!-- ダークモード時に画像を切り替える -->
 			<picture>
 				<source class="header__prepend" media="(prefers-color-scheme: dark)" srcset="./img/main-image@dark-mode.svg"
@@ -56,6 +56,8 @@
 		</h1>
 		<p>ソシャゲなどのイベント目標pt.までどのくらい頑張ればいいかを計算します。<br>
 			半角数字で入力してください。</p>
+	</header>
+	<main class="main" role="main">
 		<section>
 			<form id="js-form" class="form">
 				<div class="inputGroup">
