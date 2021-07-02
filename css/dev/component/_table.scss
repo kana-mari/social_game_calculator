@@ -1,27 +1,25 @@
 @charset "UTF-8";
 
 .table {
-	width: max-content;
-	max-width: 100%;
-	padding: 1rem;
-	border: 1px solid var(--devider-color);
+	@mixin border {
+		border-bottom: 1px solid var(--devider-color);
+	}
+
+	width: 100%;
 
 	&--invisible {
 		display: none;
 	}
 
-	// 偶数行に背景色
-	&__row:nth-child(even) {
-		background-color: var(--table-stripe-color);
-	}
-
 	&__headerCell {
+		@include border;
 		font-weight: normal;
 		padding: 0.75rem 0.5rem 0.75rem 1rem;
 		width: 14rem;
 	}
 
 	&__cell {
+		@include border;
 		padding: 0.75rem 1rem 0.75rem 0;
 		text-align: end;
 	}
