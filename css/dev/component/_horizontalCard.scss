@@ -1,6 +1,13 @@
 @charset "UTF-8";
 @use "./../mixin/mixin";
 
+.l-horizontalCardWrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	gap: 1em;
+}
+
 .horizontalCard {
 	@include mixin.card;
 }
