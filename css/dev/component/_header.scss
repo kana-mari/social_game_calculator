@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @use "./../mixin/mixin";
+@use "./../common/variables";
 
 .header {
 
@@ -10,7 +11,7 @@
 		flex-wrap: nowrap;
 		align-content: center;
 		justify-content: center;
-		background-color: var(--accent-color);
+		background-color: variables.$accent-color;
 		padding: 1rem;
 	}
 
