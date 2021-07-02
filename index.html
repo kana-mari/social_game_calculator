@@ -53,74 +53,77 @@
 			半角数字で入力してください。</p>
 	</header>
 	<main class="main" role="main">
-		<section>
-			<form id="js-form" class="form">
-				<div class="inputGroup">
-					<label for="js-input_span" class="inputGroup__label">残りイベント日数
-						<span class="inputGroup__required">*</span></label>
-					<input type="number" class="inputGroup__input" id="js-input_span" min="1" step="1" placeholder="例：14"
-						required>
-					<label for="js-input_span" class="inputGroup__append">日</label>
-				</div>
-				<div class="inputGroup">
-					<label for="js-input_goal" class="inputGroup__label">目標pt.<span class="inputGroup__required">*</span></label>
-					<input type="number" class="inputGroup__input" id="js-input_goal" min="1" step="1" placeholder="例：100000"
-						required>
-					<label for="js-input_goal" class="inputGroup__append">pt.</label>
-				</div>
-				<div class="inputGroup">
-					<label for="js-input_total" class="inputGroup__label">獲得済みpt.<span
-							class="inputGroup__required">*</span></label>
-					<input type="number" class="inputGroup__input" id="js-input_total" min="0" step="1" placeholder="例：5000"
-						required>
-					<label for="js-input_total" class="inputGroup__append">pt.</label>
-				</div>
-				<div class="inputGroup">
-					<label for="js-input_approx" class="inputGroup__label">1周回での平均獲得pt.</label>
-					<input type="number" class="inputGroup__input" id="js-input_approx" min="1" step="1" placeholder="例：400">
-					<label for="js-input_approx" class="inputGroup__append">pt.</label>
-				</div>
+		<div class="l-horizontalCardWrapper">
+			<section class="horizontalCard">
+				<form id="js-form" class="form">
+					<div class="inputGroup">
+						<label for="js-input_span" class="inputGroup__label">残りイベント日数
+							<span class="inputGroup__required">*</span></label>
+						<input type="number" class="inputGroup__input" id="js-input_span" min="1" step="1" placeholder="例：14"
+							required>
+						<label for="js-input_span" class="inputGroup__append">日</label>
+					</div>
+					<div class="inputGroup">
+						<label for="js-input_goal" class="inputGroup__label">目標pt.<span
+								class="inputGroup__required">*</span></label>
+						<input type="number" class="inputGroup__input" id="js-input_goal" min="1" step="1" placeholder="例：100000"
+							required>
+						<label for="js-input_goal" class="inputGroup__append">pt.</label>
+					</div>
+					<div class="inputGroup">
+						<label for="js-input_total" class="inputGroup__label">獲得済みpt.<span
+								class="inputGroup__required">*</span></label>
+						<input type="number" class="inputGroup__input" id="js-input_total" min="0" step="1" placeholder="例：5000"
+							required>
+						<label for="js-input_total" class="inputGroup__append">pt.</label>
+					</div>
+					<div class="inputGroup">
+						<label for="js-input_approx" class="inputGroup__label">1周回での平均獲得pt.</label>
+						<input type="number" class="inputGroup__input" id="js-input_approx" min="1" step="1" placeholder="例：400">
+						<label for="js-input_approx" class="inputGroup__append">pt.</label>
+					</div>
 
-				<!-- エラー表示エリア -->
-				<div class="error error--invisible" id="js-error">
-					<!-- 内容はJSで動的に生成 -->
-				</div>
+					<!-- エラー表示エリア -->
+					<div class="error error--invisible" id="js-error">
+						<!-- 内容はJSで動的に生成 -->
+					</div>
 
-				<!-- ボタン -->
-				<button type="submit" id="js-button" class="button">
-					<img class="button__prepend" src="./img/calc-icon.svg" width="24" height="24" alt="">
-					<span class="button__body">計算する</span>
-				</button>
-			</form>
-		</section>
+					<!-- ボタン -->
+					<button type="submit" id="js-button" class="button">
+						<img class="button__prepend" src="./img/calc-icon.svg" width="24" height="24" alt="">
+						<span class="button__body">計算する</span>
+					</button>
+				</form>
+			</section>
 
-		<!-- 計算結果表示ブロック -->
-		<section>
-			<figure id="js-output_meter"></figure>
-			<table class="table table--invisible" id="js-table">
-				<tbody>
-					<tr class="table__row">
-						<th class="table__headerCell" scope="row">目標までの残りpt.</th>
-						<td class="table__cell"><output class="output" id="js-output_remain"></output>pt.</td>
-					</tr>
-					<tr class="table__row">
-						<th class="table__headerCell" scope="row">1日あたりの目標pt.</th>
-						<td class="table__cell"><output class="output" id="js-output_dailyGoal"></output>pt.</td>
-					</tr>
-					<tr class="table__row">
-						<th class="table__headerCell">周回回数</th>
-						<td class="table__cell"><output class="output" id="js-output_remainBattle"></output>回</td>
-					</tr>
-					<tr class="table__row">
-						<th class="table__headerCell" scope="row">1日あたりの周回回数</th>
-						<td class="table__cell"><output class="output" id="js-output_dailyBattle"></output>回</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
-
+			<!-- 計算結果表示ブロック -->
+			<section class="horizontalCard">
+				<figure id="js-output_meter"></figure>
+				<table class="table table--invisible" id="js-table">
+					<tbody>
+						<tr class="table__row">
+							<th class="table__headerCell" scope="row">目標までの残りpt.</th>
+							<td class="table__cell"><output class="output" id="js-output_remain"></output>pt.</td>
+						</tr>
+						<tr class="table__row">
+							<th class="table__headerCell" scope="row">1日あたりの目標pt.</th>
+							<td class="table__cell"><output class="output" id="js-output_dailyGoal"></output>pt.</td>
+						</tr>
+						<tr class="table__row">
+							<th class="table__headerCell">周回回数</th>
+							<td class="table__cell"><output class="output" id="js-output_remainBattle"></output>回</td>
+						</tr>
+						<tr class="table__row">
+							<th class="table__headerCell" scope="row">1日あたりの周回回数</th>
+							<td class="table__cell"><output class="output" id="js-output_dailyBattle"></output>回</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+		</div>
+		
 		<!-- 解説ブロック -->
-		<section class="section">
+		<section class="card">
 			<h1 class="heading1">解説</h1>
 			<p>ソシャゲなどのイベント目標pt.までどのくらい頑張ればいいかを計算します。</p>
 			<p>入力したデータはサーバーに送信されません。</p>
