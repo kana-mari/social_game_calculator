@@ -11,3 +11,15 @@
 .horizontalCard {
 	@include mixin.card;
 }
+
+// スマホ表示時
+// ToDo: メディアクエリをmixinにする
+@media screen and (max-width: 576px) {
+	.l-horizontalCardWrapper {
+		display: block;
+	}
+
+	.horizontalCard {
+		margin: 1rem 0;
+	}
+}
