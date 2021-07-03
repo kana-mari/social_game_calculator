@@ -1,15 +1,11 @@
 @charset "UTF-8";
 
 .inputGroup {
-	display: flex;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	align-items: baseline;
 	margin-bottom: 1.5rem;
 
 	&__label {
-		flex: 0 1 11rem;
-		margin-right: 0.25rem;
+		display: block;
+		margin-bottom: 0.25rem;
 
 		&--muted {
 			color: var(--muted-text-color);
@@ -18,14 +14,11 @@
 
 	&__required {
 		color: var(--error-color);
+		font-weight: bold;
 	}
 
 	&__input {
-		// 変数宣言
-		$width: 8rem;
-
-		flex: 0 1 $width;
-		width: $width;
+		width: 8rem;
 		border: 0;
 		background-color: var(--input-bg-color);
 		color: var(--text-color);
@@ -38,7 +31,6 @@
 	}
 
 	&__append {
-		flex: 0 0 2rem;
 		margin-left: 0.25rem;
 	}
 }
