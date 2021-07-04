@@ -10,6 +10,7 @@
 
 .horizontalCard {
 	@include mixin.card;
+	margin-top: 1rem;
 }
 
 // スマホ表示時
