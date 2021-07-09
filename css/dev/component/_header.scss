@@ -1,0 +1,35 @@
+@charset "UTF-8";
+@use "./../mixin/mixin";
+@use "./../common/variables";
+
+.header {
+
+	&__title {
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-content: center;
+		justify-content: center;
+		background-color: variables.$accent-color;
+		padding: 1rem;
+	}
+
+	&__prepend {
+		width: 100px;
+		height: 100px;
+		margin-right: 10px;
+	}
+
+	&__body {
+		font-family: 'M PLUS 1p', sans-serif;
+		font-size: 2.3rem;
+		font-weight: 800;
+		color: #FFFFFF;
+	}
+
+	&__lead {
+		@include mixin.layout;
+		margin-top: 2rem;
+	}
+}

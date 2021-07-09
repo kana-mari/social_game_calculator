@@ -1,0 +1,26 @@
+@charset "UTF-8";
+@use "./../mixin/mixin";
+
+.l-horizontalCardWrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	gap: 1em;
+}
+
+.horizontalCard {
+	@include mixin.card;
+	margin-top: 1rem;
+}
+
+// スマホ表示時
+// ToDo: メディアクエリをmixinにする
+@media screen and (max-width: 576px) {
+	.l-horizontalCardWrapper {
+		display: block;
+	}
+
+	.horizontalCard {
+		margin: 1rem 0;
+	}
+}

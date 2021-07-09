@@ -4,7 +4,7 @@
 // 変数など共通設定を書く
 // CSSネイティブ変数でダークモード対応
 :root {
-	--bg-color: #FFFFFF;
+	--bg-color: #eceff1;
 	--text-color: #333333;
 	--accent-color: #{variables.$accent-color};
 	--devider-color: #cfd8dc;
@@ -12,11 +12,13 @@
 	--table-stripe-color: #eceff1;
 	--link-color: #0d6efd;
 	--muted-text-color: #666666;
+	--error-color: #ff3d00;
+	--card-gb-color:#FFFFFF;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--bg-color: #263238;
+		--bg-color: #000a12;
 		--text-color: #FFFFFF;
 		--accent-color: #33ff66;
 		--devider-color: #37474f;
@@ -24,19 +26,11 @@
 		--table-stripe-color: #37474f;
 		--link-color: #90caf9;
 		--muted-text-color: #bdbdbd;
+		--card-gb-color:#263238;
 	}
 }
 
-body {
-	background-color: var(--bg-color);
-	color: var(--text-color);
-	width: 100%;
-	max-width: 700px;
-	margin: 1rem auto;
-	padding: 0 1rem;
-	font-family: sans-serif;
-}
-
+// 基本設定
 a {
 	color: var(--link-color);
 }

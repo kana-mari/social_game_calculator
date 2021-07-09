@@ -1,0 +1,6 @@
+@charset "UTF-8";
+@use './../mixin/mixin';
+
+.main{
+	@include mixin.layout;
+}

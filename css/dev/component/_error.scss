@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.error {
+	margin: 1.5rem 0;
+	padding: 1rem;
+	border: 1px solid #ffab91;
+
+	&--invisible {
+		display: none;
+	}
+
+	// Todo: element名決める
+	h1 {
+		font-size: 1.1rem;
+		font-weight: bold;
+		color: var(--error-color);
+	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+}
