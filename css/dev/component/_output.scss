@@ -1,6 +1,6 @@
 @charset "UTF-8";
-@use './../common/variables';
 
 .output {
-	background: linear-gradient(transparent 60%, rgba(variables.$accent-color, 0.4) 60%);
+	font-weight: bold;
+	color: var(--accent-color);
 }
