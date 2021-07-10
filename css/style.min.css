@@ -11,6 +11,6 @@
  * Author URL: http://ianlunn.co.uk/
  * Github: https://github.com/IanLunn/Hover
  * Hover.css Copyright Ian Lunn 2017. Generated with Sass.
- */.error{margin:1.5rem 0;padding:1rem;border:1px solid #ffab91}.error--invisible{display:none}.error h1{font-size:1.1rem;font-weight:bold;color:var(--error-color)}.error p:last-child{margin-bottom:0}.table{width:100%}.table__headerCell{border-bottom:1px solid var(--devider-color);font-weight:normal;padding:.75rem .5rem .75rem 1rem;width:14rem}.table__cell{border-bottom:1px solid var(--devider-color);padding:.75rem 1rem .75rem 0;text-align:end}.output{font-weight:bold;color:var(--accent-color)}.section{margin:2rem 0}.list__item{margin:.5rem 0}.list__item::marker{color:var(--accent-color)}.footer{margin-top:1rem}
+ */.error{margin:1.5rem 0;padding:1rem;border:1px solid #ffab91}.error--invisible{display:none}.error h1{font-size:1.1rem;font-weight:bold;color:var(--error-color)}.error p:last-child{margin-bottom:0}.table{width:100%}.table__headerCell{border-bottom:1px solid var(--devider-color);font-weight:normal;padding:.75rem .5rem .75rem 1rem;width:14rem}.table__cell{border-bottom:1px solid var(--devider-color);padding:.75rem 1rem .75rem 0;text-align:end}.output{font-weight:bold;color:var(--accent-color)}.section{margin:2rem 0}.list__item{margin:.5rem 0}.list__item::marker{color:var(--accent-color)}.footer{width:100%;max-width:720px;margin:1rem auto;padding:0 1rem;margin-bottom:2rem}
 
 /*# sourceMappingURL=style.min.css.map */
