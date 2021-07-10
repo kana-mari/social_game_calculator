@@ -11,10 +11,13 @@
 .horizontalCard {
 	@include mixin.card;
 	margin-top: 1rem;
+
+	&--invisible {
+		display: none;
+	}
 }
 
 // スマホ表示時
-// ToDo: メディアクエリをmixinにする
 @media screen and (max-width: 576px) {
 	.l-horizontalCardWrapper {
 		display: block;

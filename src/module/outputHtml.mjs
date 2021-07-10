@@ -23,14 +23,14 @@ const Output = class OutputHtml {
 				}
 			}
 
-			// tableアニメーション
+			// 結果表示アニメーション
 			/**
-			 * table要素 #js-table
+			 * #js-result .horizontalCard
 			 * @type {HTMLElement}
 			 */
-			const table = document.getElementById('js-table');
-			table.classList.remove('table--invisible', 'animate__animated', 'animate__fadeIn');
-			table.classList.add('animate__animated', 'animate__fadeIn');
+			const result = document.getElementById('js-result');
+			result.classList.remove('horizontalCard--invisible', 'animate__animated', 'animate__fadeIn');
+			result.classList.add('animate__animated', 'animate__fadeIn');
 		} else {
 			// ダメなら例外を投げる
 			throw new Error('引数はMap、かつsizeが2か4でなければならない');
