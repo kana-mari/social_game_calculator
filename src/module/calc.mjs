@@ -41,7 +41,7 @@ const calc = function calcNumber(map) {
 			* 目標pt.までに必要な周回回数
 			* @type {number}
 			*/
-			const remainBattle = Math.ceil(dailyGoal / map.get('approx'));
+			const remainBattle = Math.ceil(remain / map.get('approx'));
 			/**
 			 * 目標pt.までに必要な1日当たりの周回回数
 			 * @type {number}

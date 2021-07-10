@@ -7,10 +7,6 @@
 
 	width: 100%;
 
-	&--invisible {
-		display: none;
-	}
-
 	&__headerCell {
 		@include border;
 		font-weight: normal;
