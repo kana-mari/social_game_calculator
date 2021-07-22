@@ -1,0 +1,94 @@
+body {
+	background-color: #ECEFF1;
+	font-family: sans-serif;
+}
+
+// ヘッダー
+header h1 {
+	background-color: #00C853;
+	color: white;
+	margin: 0;
+	padding: 1rem;
+}
+
+header p {
+	max-width: 750px;
+	margin: 1rem auto;
+}
+
+// メイン
+main {
+	max-width: 750px;
+	margin: auto;
+	padding: 0.5rem;
+}
+
+h1,
+h2,
+h3 {
+	color: #00C853;
+	font-weight: bold;
+}
+
+.l-horizontalCardWrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	gap: 1em;
+}
+
+%cardCommon {
+	padding: 1rem;
+	background-color: white;
+}
+
+.horizontalCard {
+	@extend %cardCommon;
+}
+
+.card {
+	@extend %cardCommon;
+	margin: 1rem 0;
+}
+
+// フッター
+footer {
+	margin-bottom: 1rem;
+}
+
+// FAB
+.floatingActBtn {
+	width: max-content;
+	position: fixed;
+	right: 1rem;
+	bottom: 1rem;
+	z-index: 2;
+
+	&__a {
+		$size: 45px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: $size;
+		height: $size;
+		background-color: hsla(145, 100%, 39%, 0.75);
+		color: white;
+		text-decoration: none;
+		border-radius: 50%;
+
+		&:hover {
+			background-color: hsla(145, 100%, 39%, 1);
+		}
+	}
+}
+
+// スマホ表示時
+@media screen and (max-width: 576px) {
+	.l-horizontalCardWrapper {
+		display: block;
+	}
+
+	.horizontalCard {
+		margin: 1rem 0;
+	}
+}

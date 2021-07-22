@@ -6,7 +6,7 @@
 	"scripts": {
 		"Compile:sass-all": "run-s Compile:sass2css Autoprefixer",
 		"Browser-Sync:moduleTest": "browser-sync start --server --startPath './test/test-runnner.html' --watch './test/*'",
-		"Browser-Sync": "browser-sync start --server --files 'index.html, src/index.js, css/style.min.css'",
+		"Browser-Sync": "browser-sync start --server --files 'index.html, css/style.min.css'",
 		"Compile:sass2css": "sass css/dev/style.scss --style=compressed css/style.min.css",
 		"Autoprefixer": "postcss css/style.min.css --map --use autoprefixer --output css/style.min.css",
 		"webpack:development": "webpack --config webpack.config.dev.js",
@@ -22,17 +22,18 @@
 	},
 	"homepage": "https://github.com/kana-mari/social_game_calculator#readme",
 	"devDependencies": {
-		"autoprefixer": "^10.2.3",
-		"chai": "^4.2.0",
-		"mocha": "^8.2.1",
+		"autoprefixer": "^10.3.1",
+		"chai": "^4.3.4",
+		"htmlhint": "^0.15.1",
+		"mocha": "^9.0.2",
 		"npm-run-all": "^4.1.5",
-		"postcss": "^8.2.4",
+		"postcss": "^8.3.6",
 		"postcss-cli": "^8.3.1",
-		"sass": "^1.32.5",
+		"sass": "^1.35.2",
 		"v8n": "^1.3.3",
-		"webpack": "^5.16.0",
-		"webpack-cli": "^4.4.0",
-		"webpack-merge": "^5.7.3"
+		"webpack": "^5.45.1",
+		"webpack-cli": "^4.7.2",
+		"webpack-merge": "^5.8.0"
 	},
 	"browserslist": [
 		"last 2 versions",

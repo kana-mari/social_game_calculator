@@ -1,0 +1,6 @@
+@charset "UTF-8";
+@use "./../mixin/mixin";
+
+.card {
+	@include mixin.card;
+}
