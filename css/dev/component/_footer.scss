@@ -1,5 +1,7 @@
 @charset "UTF-8";
+@use "./../mixin/mixin";
 
 .footer {
-	margin-top: 1rem;
+	@include mixin.layout;
+	margin-bottom: 2rem;
 }

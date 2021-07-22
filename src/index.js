@@ -1,3 +1,4 @@
+// エントリーポイント
 import Main from "./module/main.mjs";
 
 new Main();
